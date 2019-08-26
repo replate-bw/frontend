@@ -12,7 +12,6 @@ const Navbar = props => {
             <NavLink
               exact
               to="/"
-              href="#"
               className="nav-link"
               activeClassName="nav-link-active"
             >
@@ -26,18 +25,11 @@ const Navbar = props => {
               About
             </NavLink>
             <NavLink
-              to="/contact"
+              to="/signup"
               className="nav-link"
               activeClassName="nav-link-active"
             >
-              Contact
-            </NavLink>
-            <NavLink
-              to="/team"
-              className="nav-link"
-              activeClassName="nav-link-active"
-            >
-              Team
+              Sign Up
             </NavLink>
             <NavLink
               to="/login"
