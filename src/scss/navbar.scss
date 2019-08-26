@@ -1,0 +1,107 @@
+
+
+.navbar {
+    height: 70px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background: #3d4d41;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+  
+    .nav-logo {
+      color: white;
+      font-size: 3.6rem;
+      font-family: 'Red Hat Display', sans-serif;
+      font-weight: 500;
+    }
+  
+    .nav-content {
+      width: 95%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      padding: 0 2.4rem;
+    }
+  
+    .nav-links {
+      width: 40%;
+      display: flex;
+      justify-content: space-between;
+      margin-left: auto;
+  
+      .nav-link {
+        font-size: 1.85rem;
+        color: #c6dad5;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-family: 'Work Sans', sans-serif;
+        // transition: all 250ms ease-out;
+        letter-spacing: 1px;
+        position: relative;
+        padding: 8px 6px;
+  
+        
+        &:before,
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: 2px;
+          left: 0; right: 0;
+          height: 2px;
+          background: lighten(#c6dad5, 9%);
+        }
+        &:before {
+          opacity: 0;
+          transform: translateY(- $nav-distance);
+          transition: transform 0s $nav-easeOutBack, opacity 0s;
+        }
+        &:after {
+          opacity: 0;
+          transform: translateY($nav-distance/2);
+          transition: transform $nav-duration $nav-easeOutBack, opacity $nav-duration;
+        }
+        &:hover,
+        &:active {
+          color: lighten(#c6dad5, 9%);
+          &:before,
+          &:after {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          &:before {
+            transition: transform $nav-duration $nav-easeOutBack, opacity $nav-duration;
+          }
+          &:after {
+            transition: transform 0s $nav-duration $nav-easeOutBack, opacity 0s $nav-duration;
+          }
+        }
+      }
+  
+           
+      
+    .nav-link.nav-link-active {
+        color: white;
+  
+        &:before {
+          transition: none;
+        }
+  
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 2px;
+          height: 2px;
+          background: white;
+          opacity: 1;
+          transition: none;
+          transform: translateY(0);
+        }
+      }
+        
+  
+    }
+  }
