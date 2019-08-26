@@ -4,3 +4,25 @@
     justify-content: $j;
     align-items: $a;
 }
+
+
+@mixin NavFont {
+    font-size: 1.85rem;
+    color: $nav-gray;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: $body;
+    letter-spacing: 1px;
+}
+
+@mixin HeaderFont {
+    font-family: $header;
+    font-weight: 500;
+}
+
+
+@mixin LogoFont {
+    @include HeaderFont;
+    color: $white;
+    font-size: 4rem;
+}
