@@ -112,6 +112,28 @@
                 padding-bottom: 1rem;
                 border-bottom: 1px solid $black;
             }
+
+            .day-schedule__pickup {
+                @include Flex(column, center, flex-start);
+                width: 90%;
+                margin: 1.2rem auto;
+
+                .pickup-info {
+
+                    .pickup-time-amount {
+                        @include HeaderFont;
+                        font-size: 1.8rem;
+                        color: $bg-dark;
+                    }
+
+                    .pickup-type {
+                        font-family: $body;
+                        font-size: 1.4rem;
+                        margin: 1rem 0;
+                        line-height: 1.8rem;
+                    }
+                }
+            }
         }
         
     }
