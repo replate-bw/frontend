@@ -52,7 +52,7 @@
             margin: 0 auto;
         }
 
-        .location-address {
+        .location-info {
             font-size: 2rem;
             font-family: $body;
             line-height: 2.4rem;
@@ -91,6 +91,17 @@
         }
     }
 
+    .accept-pickup__button {
+        margin-left: auto;
+        padding: 0.8rem;
+        border: none;
+
+        svg {
+            margin: 0;
+            font-size: 3rem;
+        }
+    }
+
     .dashboard-button.add-location__button {
         @include Flex(column);
         padding: 2rem 1.5rem;
@@ -122,6 +133,7 @@
                 text-transform: uppercase;
                 padding-bottom: 1rem;
                 border-bottom: 1px solid $black;
+                line-height: 2.4rem;
             }
 
             .day-schedule__pickup {

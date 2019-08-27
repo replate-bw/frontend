@@ -27,7 +27,7 @@ const BusinessDashboard = () => {
                 <div className="dashboard-location">
                     <div className='location-image'></div>
                     <div className="location-text">
-                    <p className='location-address'>111 Miller Drive<br />San Jose CA, 95008</p>
+                    <p className='location-info'>111 Miller Drive<br />San Jose CA, 95008</p>
                     </div>
                 </div>
                 <Link onMouseEnter={buttonHover} onMouseLeave={buttonReturn} className='dashboard-button add-location__button'>
@@ -49,7 +49,7 @@ const BusinessDashboard = () => {
 
             <div className="week-schedule">
                 <div className="day-schedule">
-                    <div className='day-schedule__date'>August 26, 2019</div>
+                    <div className='day-schedule__date'>Monday<br />August 26, 2019</div>
                     {/* map over appointments here */}
                     <div className='day-schedule__pickup'>
                         <div className="pickup-info">
@@ -65,16 +65,16 @@ const BusinessDashboard = () => {
                     </div>
                 </div>
                 <div className="day-schedule">
-                    <div className='day-schedule__date'>August 27, 2019</div>
+                    <div className='day-schedule__date'>Tuesday<br />August 27, 2019</div>
                 </div>
                 <div className="day-schedule">
-                    <div className='day-schedule__date'>August 28, 2019</div>
+                    <div className='day-schedule__date'>Wednesday<br />August 28, 2019</div>
                 </div>
                 <div className="day-schedule">
-                    <div className='day-schedule__date'>August 29, 2019</div>
+                    <div className='day-schedule__date'>Thursday<br />August 29, 2019</div>
                 </div>
                 <div className="day-schedule">
-                    <div className='day-schedule__date'>August 30, 2019</div>
+                    <div className='day-schedule__date'>Friday<br />August 30, 2019</div>
                 </div>
                 </div>
             </div>

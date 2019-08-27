@@ -8,7 +8,7 @@ import { TweenMax } from "gsap";
 const NewPickupForm = () => {
 
     useEffect(() => {
-        TweenMax.to('.pickup-form', .2, {y: -12});
+        TweenMax.to('.pickup-form', .3, {y: -15});
     })
 
     const buttonHover = e => {
@@ -68,6 +68,10 @@ const FormikPickupForm = withFormik({
             amount: amount || '',
             type: type || ''
         }
+    },
+
+    handleSubmit(values) {
+        console.log(values);
     }
 })(NewPickupForm)
 
