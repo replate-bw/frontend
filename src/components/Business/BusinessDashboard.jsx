@@ -1,6 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
 const BusinessDashboard = () => {
     return (
@@ -16,11 +16,16 @@ const BusinessDashboard = () => {
                     <p className='location-address'>111 Miller Drive<br />San Jose CA, 95008</p>
                     </div>
                 </div>
+                <button className='dashboard-button add-location__button'>
+                <FontAwesomeIcon icon={faPlusCircle} />
+                New<br />Location
+                </button>
             </div>
+
             </div>
             <div className='dashboard-section'>
             <h3 className='dashboard-subheader'>Scheduled Pickups</h3>
-            <button className='schedule-pickup__button'>
+            <button className='dashboard-button'>
                 <FontAwesomeIcon icon={faPlus} />
                 Make A Donation
                 </button>

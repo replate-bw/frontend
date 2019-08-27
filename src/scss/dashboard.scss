@@ -58,18 +58,36 @@
         }
     }
 
-    .schedule-pickup__button {
+    .dashboard-button {
         @include Flex;
         background: none;
-        border: 2px solid black;
+        border: 2px solid lightgray;
         font-size: 2.5rem;
         text-transform: uppercase;
         font-family: $header;
         padding: 1.2rem 2rem;
         border-radius: 5px;
+        letter-spacing: 1px;
 
         svg {
             margin-right: 1.2rem;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .dashboard-button.add-location__button {
+        @include Flex(column);
+        padding: 2rem 1.5rem;
+        font-size: 2.2rem;
+        margin-left: 2.4rem;
+
+        svg {
+            margin: 0;
+            margin-bottom: 1rem;
+            font-size: 3rem;
         }
     }
 }
