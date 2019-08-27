@@ -1,0 +1,60 @@
+.dashboard {
+    width: 85%;
+    margin: 4.8rem auto;
+
+    .dashboard-header {
+        @include HeaderFont;
+        font-size: 6rem;
+        color: $bg-dark;
+    }
+
+    .dashboard-subheader {
+        font-family: $subheader;
+        font-size: 2.4rem;
+        color: $black;
+        margin-bottom: 0;
+        text-transform: uppercase;
+    }
+
+    .dashboard-section {
+        margin: 6.4rem 0;
+    }
+
+    .dashboard-locations {
+        width: 100%;
+        @include Flex(row, flex-start);
+        margin: 2.8rem 0;
+    }
+
+    .dashboard-location {
+        width: 320px;
+        border: 2px solid black;
+        border-radius: 5px;
+        margin-right: 3.2rem;
+        background: lighten($nav-gray, 10%);
+        padding: 1rem;
+
+        .location-image {
+            height: 120px;
+            width: 90%;
+            margin: 2rem auto;
+            border-radius: 3px;
+            background: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80');
+            background-size: cover;
+            background-position: center;
+            // border: 2px solid $black;
+        }
+
+        .location-text {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .location-address {
+            font-size: 2rem;
+            font-family: $body;
+            line-height: 2.4rem;
+            margin: 1rem 0;
+        }
+    }
+}

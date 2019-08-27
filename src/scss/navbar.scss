@@ -15,14 +15,14 @@
   
     .nav-content {
       @include Flex(row, flex-start, center);
-      width: 95%;
+      width: 97%;
       margin: 0 auto;
       padding: 0 2.4rem;
     }
   
     .nav-links {
       @include Flex(row, space-between);
-      width: 40%;
+      width: 38%;
       margin-left: auto;
   
       .nav-link {
