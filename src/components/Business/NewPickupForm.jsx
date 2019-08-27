@@ -7,6 +7,10 @@ import { TweenMax } from "gsap";
 
 const NewPickupForm = () => {
 
+    useEffect(() => {
+        TweenMax.to('.pickup-form', .2, {y: -12});
+    })
+
     const buttonHover = e => {
         const btn = e.target;
         TweenMax.to(btn, 0.15, { y: -2 });
