@@ -15,7 +15,7 @@ import VollunteerDashboard from './components/JuliesDummyComponents/VollunteerDa
 import Signup from './components/JuliesDummyComponents/Signup';
 
 function App () {
-	const [ user, setUser ] = useState([]);
+	const [ user, setUser ] = useState(data);
 
 	const getUser = currentUser => {
 		setUser(currentUser);
@@ -28,45 +28,12 @@ function App () {
 			<div className="app">
 				<Navbar />
 				<Route exact path="/login" component={Login} />
-
 				<Route exact path="/signup" component={Signup} />
-
-				<PrivateRoute path="/protected/voll/" component={VollunteerDashboard} />
-				<PrivateRoute path="/protected/busn/" component={BusnDashboard} />
-
-				{/* <PrivateRoute
-					path="/protected/busn/:id"
-					render={props => {
-						if (!user) {
-							return <div>Loading...</div>;
-						}
-						return <BusnDashboard {...props} />;
-					}}
-				/> */}
-
-				{/* <PrivateRoute path="/protected/voll/:id" component={VollunteerDashboard} />
-				<PrivateRoute path="/protected/busn/:id" component={BusnDashboard} /> */}
-
-				{/* <PrivateRoute
-					path="/protected/voll"
-					render={props => {
-						if (!user) {
-							return <div>Loading...</div>;
-						}
-						return <VollunteerDashboard {...props} user={user} />;
-					}}
-				/> */}
+				<PrivateRoute path="/protected/voll/:id" component={VollunteerDashboard} />
+				<PrivateRoute path="/protected/busn/:id" component={BusnDashboard} />
 			</div>
 		</UserContext.Provider>
 	);
 }
 
 export default App;
-
-{
-	/* <PrivateRoute exact path="/protected/busn" component={BusnDashboard} /> */
-}
-
-{
-	/* <PrivateRoute exact path="/protected/voll/:id" component={VollunteerDashboard} /> */
-}
