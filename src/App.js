@@ -12,56 +12,50 @@ import Login from './components/login/Login';
 //dummy components to be removed
 import BusnDashboard from './components/JuliesDummyComponents/BusnDashboard';
 import VollunteerDashboard from './components/JuliesDummyComponents/VollunteerDashboard';
+import Signup from './components/JuliesDummyComponents/Signup';
 
 function App () {
-	const [ users, setUsers ] = useState(data);
+	const [ user, setUser ] = useState([]);
 
-	// useEffect(
-	//     () => {
-	//         const getUsers = () => {
-	//             axiosWithAuth()
-	// .get()
-	//             .then(res => {
-	//               console.log(res)
-	//                 setUsers(res.data)
-	//             })
-	//             .catch(e => {
-	//                 console.log('Server error', e)
-	//             })
-	//         };
-	//         getUsers();
-	//     }, [users]
-	// );
+	const getUser = currentUser => {
+		setUser(currentUser);
+	};
 
-	console.log(users);
+	console.log(user, 'I am the current user');
 
 	return (
-		<UserContext.Provider value={{ users }}>
+		<UserContext.Provider value={{ user, setUser, getUser }}>
 			<div className="app">
 				<Navbar />
 				<Route exact path="/login" component={Login} />
 
-				<PrivateRoute
+				<Route exact path="/signup" component={Signup} />
+
+				<PrivateRoute path="/protected/voll/" component={VollunteerDashboard} />
+				<PrivateRoute path="/protected/busn/" component={BusnDashboard} />
+
+				{/* <PrivateRoute
 					path="/protected/busn/:id"
 					render={props => {
-						const user = users.find(user => user.id == props.match.params.id);
 						if (!user) {
 							return <div>Loading...</div>;
 						}
-						return <BusnDashboard {...props} user={user} />;
+						return <BusnDashboard {...props} />;
 					}}
-				/>
+				/> */}
 
-				<PrivateRoute
-					path="/protected/voll/:id"
+				{/* <PrivateRoute path="/protected/voll/:id" component={VollunteerDashboard} />
+				<PrivateRoute path="/protected/busn/:id" component={BusnDashboard} /> */}
+
+				{/* <PrivateRoute
+					path="/protected/voll"
 					render={props => {
-						const user = users.find(user => user.id == props.match.params.id);
 						if (!user) {
 							return <div>Loading...</div>;
 						}
 						return <VollunteerDashboard {...props} user={user} />;
 					}}
-				/>
+				/> */}
 			</div>
 		</UserContext.Provider>
 	);
