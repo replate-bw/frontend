@@ -42,14 +42,14 @@ const Login = (props) => {
 			<FormikForm use="semantic-ui-react">
                 <div>
                 <Form.Field>
-				<Field className="login-input" type="text" name="username" data-testid="username" placeholder="Name" />
-                {touched.username && errors.username && <p className="error">{errors.username}</p>}
+				<Field className="login-input" type="email" name="email" data-testid="email" placeholder="Email" />
+                {touched.email && errors.email && <p className="error">{errors.email}</p>}
                 </Form.Field>
                 </div>
                 <div>
                 <Form.Field>
-				<Field className="login-input" type="text" name="password" data-testid="password" placeholder="Password" />
-				{touched.email && errors.email && <p className="error">{errors.email}</p>}
+				<Field className="login-input" type="password" name="password" data-testid="password" placeholder="Password" />
+				{touched.password && errors.password && <p className="error">{errors.password}</p>}
                 </Form.Field>
                 </div>
 
@@ -66,21 +66,21 @@ const Login = (props) => {
 };
 
 const FormikLoginForm = withFormik({
-	mapPropsToValues ({ username, password }) {
+	mapPropsToValues ({ email, password }) {
 		return {
-			username     : username || '',
+			email     : email || '',
 			password : password || ''
 		};
 	},
 
 	validationSchema : Yup.object().shape({
-		username     : Yup.string().required('You cannot pass!!!'),
+		email     : Yup.string().required('You cannot pass!!!'),
 		password : Yup.string().min(6, 'Password has to be longer than 6 characters').required('Cannot pass'),		
 	}),
 
 	handleSubmit (values, { setStatus }) {
 		axios
-			.post('', values)
+			.post('http://replatedb.herokuapp.com/auth/login', values)
 			.then((res) => {
                 console.log(res.data)
                 localStorage.setItem('token', res.data.payload);
