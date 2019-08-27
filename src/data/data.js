@@ -9,7 +9,7 @@ export default  {
       },
       "address": "111 Miller Drive",
       "email": "s@s.com",
-      "accountType": "business"
+      "accountType": "business",
       "appointments": {
         "08262019": {
           "description": {
