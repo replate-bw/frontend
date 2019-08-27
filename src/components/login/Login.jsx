@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 import UserContext from '../../contexts/UserContext'
 import { axiosWithAuth } from '../../utils/axiosWithAuth'
 import { Form } from 'semantic-ui-react'
-// import '../../scss/login.scss'
 
 const Login = (props) => {
 
@@ -39,8 +38,7 @@ const Login = (props) => {
 	return (
         <>
         <div className="login-panel">
-		<div className="user-form">
-        
+		
 			<FormikForm use="semantic-ui-react">
                 <div>
                 <Form.Field>
@@ -56,12 +54,12 @@ const Login = (props) => {
                 </div>
 
                 <div>
-				<button className="login-button" onClick={handleSubmit} type="submit">Submit!</button>
+				<button className="login-button" onClick={handleSubmit} type="submit">LOGIN</button>
                 </div>
 			</FormikForm>
             
             
-		</div>
+	
         </div>
         </>
 	);
