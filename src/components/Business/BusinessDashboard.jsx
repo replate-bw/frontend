@@ -2,6 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { TweenMax } from "gsap";
+import { Link } from 'react-router-dom'
 
 
 const BusinessDashboard = () => {
@@ -29,19 +30,19 @@ const BusinessDashboard = () => {
                     <p className='location-address'>111 Miller Drive<br />San Jose CA, 95008</p>
                     </div>
                 </div>
-                <button onMouseEnter={buttonHover} onMouseLeave={buttonReturn} className='dashboard-button add-location__button'>
+                <Link onMouseEnter={buttonHover} onMouseLeave={buttonReturn} className='dashboard-button add-location__button'>
                 <FontAwesomeIcon icon={faPlusCircle} />
                 New<br />Location
-                </button>
+                </Link>
             </div>
 
             </div>
             <div className='dashboard-section'>
             <h3 className='dashboard-subheader'>Scheduled Pickups</h3>
-            <button onMouseEnter={buttonHover} onMouseLeave={buttonReturn} className='dashboard-button'>
+            <Link to='/new-pickup' onMouseEnter={buttonHover} onMouseLeave={buttonReturn} className='dashboard-button'>
                 <FontAwesomeIcon icon={faPlus} />
                 Make A Donation
-                </button>
+                </Link>
             </div>
             <div className='dashboard-section'>
             <h3 className='dashboard-subheader'>Next Week's Schedule</h3>
