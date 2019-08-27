@@ -1,6 +1,7 @@
 export default {
 	users: [
 		{
+			id: 0,
 			name: 'Costco', // This is a business
 			contact: {
 				firstName: 'John',
@@ -22,6 +23,7 @@ export default {
 			}
 		},
 		{
+			id: 1,
 			name: 'John Smith', // In the case of a user, this is auto-generated
 			contact: {
 				firstName: 'John',

@@ -1,6 +1,8 @@
 import React from 'react';
 
-const BusnDashboard = () => {
+const BusnDashboard = props => {
+	const id = props.match.params.id;
+
 	return <div>I am a busn Dashboard</div>;
 };
 

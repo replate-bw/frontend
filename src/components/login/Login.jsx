@@ -4,6 +4,8 @@ import axios from 'axios';
 import * as Yup from 'yup';
 import UserContext from '../../contexts/UserContext'
 import { axiosWithAuth } from '../../utils/axiosWithAuth'
+import { Form } from 'semantic-ui-react'
+// import '../../scss/login.scss'
 
 const Login = (props) => {
 
@@ -15,7 +17,7 @@ const Login = (props) => {
     //     () => {
     //         const getUsers = () => {
     //             axiosWithAuth()
-    //             .get()
+    //             .get('../data/data.js')
     //             .then(res => {
     //                 setUsers(res.data)
     //             })
@@ -36,21 +38,29 @@ const Login = (props) => {
 
 	return (
         <>
-        <div className="panel">
+        <div className="login-panel">
 		<div className="user-form">
-			<FormikForm>
+        
+			<FormikForm use="semantic-ui-react">
                 <div>
-				<Field type="text" name="username" data-testid="username" placeholder="Name" />
-				{touched.username && errors.username && <p className="error">{errors.username}</p>}
+                <Form.Field>
+				<Field className="login-input" type="text" name="username" data-testid="username" placeholder="Name" />
+                {touched.username && errors.username && <p className="error">{errors.username}</p>}
+                </Form.Field>
                 </div>
                 <div>
-				<Field type="text" name="password" data-testid="password" placeholder="Password" />
+                <Form.Field>
+				<Field className="login-input" type="text" name="password" data-testid="password" placeholder="Password" />
 				{touched.email && errors.email && <p className="error">{errors.email}</p>}
+                </Form.Field>
                 </div>
+
                 <div>
-				<button onClick={handleSubmit} type="submit">Submit!</button>
+				<button className="login-button" onClick={handleSubmit} type="submit">Submit!</button>
                 </div>
 			</FormikForm>
+            
+            
 		</div>
         </div>
         </>
@@ -74,12 +84,24 @@ const FormikLoginForm = withFormik({
 		axios
 			.post('', values)
 			.then((res) => {
+                console.log(res.data)
                 localStorage.setItem('token', res.data.payload);
-                this.props.history.push("/protected")
+                const id = res.data.id
+                if (res.data.accountType === 'business') {
+                    
+                this.props.history.push(`/protected/busn/${id}`)
+                }
+                else {
+                    this.props.history.push(`/protected/voll/${id}`)
+                }
 			})
 			.catch((err) => console.log(err.response));
     },
 })(Login);
 
 export default FormikLoginForm;
+
+
+
+
 
