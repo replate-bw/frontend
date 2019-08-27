@@ -30,6 +30,27 @@ const BusinessDashboard = () => {
                 Make A Donation
                 </button>
             </div>
+            <div className='dashboard-section'>
+            <h3 className='dashboard-subheader'>Next Week's Schedule</h3>
+
+            <div className="week-schedule">
+                <div className="day-schedule">
+                    <div className='day-schedule__date'>August 27, 2019</div>
+                </div>
+                <div className="day-schedule">
+                    <div className='day-schedule__date'>August 27, 2019</div>
+                </div>
+                <div className="day-schedule">
+                    <div className='day-schedule__date'>August 27, 2019</div>
+                </div>
+                <div className="day-schedule">
+                    <div className='day-schedule__date'>August 27, 2019</div>
+                </div>
+                <div className="day-schedule">
+                    <div className='day-schedule__date'>August 27, 2019</div>
+                </div>
+                </div>
+            </div>
         </div>
     )
 }
