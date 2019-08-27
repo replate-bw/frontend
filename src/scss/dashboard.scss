@@ -18,7 +18,7 @@
     }
 
     .dashboard-section {
-        margin: 6.4rem 0;
+        margin: 5.4rem 0;
 
 
     .dashboard-locations {
@@ -29,11 +29,11 @@
 
     .dashboard-location {
         min-width: 340px;
-        border: 2px solid black;
+        border: 2px solid $bg-dark;
         border-radius: 5px;
-        margin: 1.5rem 0;
+        margin: 1.2rem 0;
         margin-right: 3.2rem;
-        background: lighten($nav-gray, 10%);
+        background: lighten($nav-gray, 15%);
         padding: 1rem;
 
         .location-image {
@@ -70,6 +70,8 @@
         padding: 1.2rem 2rem;
         border-radius: 5px;
         letter-spacing: 1px;
+        transition: all 150ms ease-out;
+
 
         svg {
             margin-right: 1.2rem;
@@ -77,6 +79,11 @@
 
         &:hover {
             cursor: pointer;
+            background: lighten($nav-gray, 15%);
+            border-color: #202020;
+        }
+        &:focus {
+            outline: none;
         }
     }
 

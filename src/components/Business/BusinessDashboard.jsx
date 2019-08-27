@@ -1,8 +1,21 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { TweenMax } from "gsap";
+
 
 const BusinessDashboard = () => {
+
+    const buttonHover = e => {
+        const btn = e.target;
+        TweenMax.to(btn, 0.15, { y: -2 });
+      };
+    
+      const buttonReturn = e => {
+        const btn = e.target;
+        TweenMax.to(btn, 0.15, { y: 0 });
+      };
+
     return (
         <div className='dashboard'>
             <h1 className='dashboard-header'>Tony & Alba's</h1>
@@ -16,7 +29,7 @@ const BusinessDashboard = () => {
                     <p className='location-address'>111 Miller Drive<br />San Jose CA, 95008</p>
                     </div>
                 </div>
-                <button className='dashboard-button add-location__button'>
+                <button onMouseEnter={buttonHover} onMouseLeave={buttonReturn} className='dashboard-button add-location__button'>
                 <FontAwesomeIcon icon={faPlusCircle} />
                 New<br />Location
                 </button>
@@ -25,7 +38,7 @@ const BusinessDashboard = () => {
             </div>
             <div className='dashboard-section'>
             <h3 className='dashboard-subheader'>Scheduled Pickups</h3>
-            <button className='dashboard-button'>
+            <button onMouseEnter={buttonHover} onMouseLeave={buttonReturn} className='dashboard-button'>
                 <FontAwesomeIcon icon={faPlus} />
                 Make A Donation
                 </button>
