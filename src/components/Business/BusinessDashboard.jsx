@@ -1,4 +1,6 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 const BusinessDashboard = () => {
     return (
@@ -18,6 +20,10 @@ const BusinessDashboard = () => {
             </div>
             <div className='dashboard-section'>
             <h3 className='dashboard-subheader'>Scheduled Pickups</h3>
+            <button className='schedule-pickup__button'>
+                <FontAwesomeIcon icon={faPlus} />
+                Make A Donation
+                </button>
             </div>
         </div>
     )

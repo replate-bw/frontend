@@ -14,16 +14,16 @@
         color: $black;
         margin-bottom: 0;
         text-transform: uppercase;
+        margin: 2.8rem 0;
     }
 
     .dashboard-section {
         margin: 6.4rem 0;
-    }
+
 
     .dashboard-locations {
         width: 100%;
         @include Flex(row, flex-start);
-        margin: 2.8rem 0;
     }
 
     .dashboard-location {
@@ -57,4 +57,20 @@
             margin: 1rem 0;
         }
     }
+
+    .schedule-pickup__button {
+        @include Flex;
+        background: none;
+        border: 2px solid black;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        font-family: $header;
+        padding: 1.2rem 2rem;
+        border-radius: 5px;
+
+        svg {
+            margin-right: 1.2rem;
+        }
+    }
+}
 }
