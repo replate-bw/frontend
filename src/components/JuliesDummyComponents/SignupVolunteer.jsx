@@ -51,7 +51,7 @@ const SignupVolunteer = (props) => {
 				<Field className="login-input" component="select" name="accountType" data-testid="accountType">
                     <option value="select">Select</option>
                     <option value="business">Business</option>
-                    <option value="vollunteer">Volunteer</option>
+                    <option value="volunteer">Volunteer</option>
                 </Field>
 				{touched.accountType && errors.accountType && <p className="error">{errors.accountType}</p>}
                 </Form.Field>
@@ -113,10 +113,10 @@ const FormikLoginForm = withFormik({
                 const id = res.data.id
                 if (res.data.accountType === 'business') {
                     
-                props.history.push(`/protected/business/${id}`)
+                props.history.push(`/protected/business`)
                 }
                 else {
-                props.history.push(`/protected/vollunteer/${id}`)
+                props.history.push(`/protected/volunteer`)
                 }
 			})
 			.catch((err) => console.log(err.response));
