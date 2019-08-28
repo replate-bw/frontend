@@ -21,7 +21,9 @@ const BusinessDashboard = props => {
 		TweenMax.to(btn, 0.15, { y: 0 });
 	};
 
-	return (
+	return !user ? (
+		<div>Loading...</div>
+	) : (
 		<div className="dashboard">
 			<h1 className="dashboard-header">Tony & Alba's</h1>
 			<div className="dashboard-section">

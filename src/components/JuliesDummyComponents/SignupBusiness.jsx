@@ -121,7 +121,7 @@ const FormikLoginForm = withFormik({
                 props.history.push(`/protected/business`)
                 }
                 else {
-                props.history.push(`/protected/vollunteer`)
+                props.history.push(`/protected/volunteer`)
                 }
 			})
 			.catch((err) => console.log(err.response));

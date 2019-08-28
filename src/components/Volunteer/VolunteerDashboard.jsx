@@ -21,9 +21,11 @@ const VolunteerDashboard = props => {
 		TweenMax.to(btn, 0.15, { y: 0 });
 	};
 
-	return (
+	return !user ? (
+		<div>Loading...</div>
+	) : (
 		<div className="dashboard">
-			<h1 className="dashboard-header">{user.contact.firstName}</h1>
+			<h1 className="dashboard-header">{user.firstName}</h1>
 			<div className="dashboard-section">
 				<h3 className="dashboard-subheader">Pending Pickup Requests</h3>
 				<div className="dashboard-locations">
