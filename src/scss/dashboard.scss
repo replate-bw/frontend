@@ -1,0 +1,164 @@
+.dashboard {
+    width: 85%;
+    margin: 4.8rem auto;
+
+    .dashboard-header {
+        @include HeaderFont;
+        font-size: 6rem;
+        color: $bg-dark;
+    }
+
+    .dashboard-subheader {
+        font-family: $subheader;
+        font-size: 2.4rem;
+        color: $black;
+        margin-bottom: 0;
+        text-transform: uppercase;
+        margin: 2.8rem 0;
+    }
+
+    .dashboard-section {
+        margin: 5.4rem 0;
+
+
+    .dashboard-locations {
+        width: 100%;
+        @include Flex(row, flex-start);
+        flex-wrap: wrap;
+    }
+
+    .dashboard-location {
+        min-width: 340px;
+        border: 2px solid $bg-dark;
+        border-radius: 5px;
+        margin: 1.2rem 0;
+        margin-right: 3.2rem;
+        background: lighten($nav-gray, 15%);
+        padding: 1rem;
+
+        .location-image {
+            height: 120px;
+            width: 90%;
+            margin: 2rem auto;
+            border-radius: 3px;
+            background: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80');
+            background-size: cover;
+            background-position: center;
+            // border: 2px solid $black;
+        }
+
+        .location-text {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .location-info {
+            font-size: 2rem;
+            font-family: $body;
+            line-height: 2.4rem;
+            margin: 1rem 0;
+        }
+    }
+
+    .dashboard-button {
+        @include Flex;
+        background: none;
+        border: 2px solid lightgray;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        font-family: $header;
+        padding: 1.2rem 2rem;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        transition: all 150ms ease-out;
+        text-decoration: none;
+        color: $black;
+        text-align: center;
+        max-width: 375px;
+
+
+        svg {
+            margin-right: 1.2rem;
+        }
+
+        &:hover {
+            cursor: pointer;
+            background: lighten($nav-gray, 15%);
+            border-color: #202020;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .accept-pickup__button {
+        margin-left: auto;
+        padding: 0.8rem;
+        border: none;
+
+        svg {
+            margin: 0;
+            font-size: 3rem;
+        }
+    }
+
+    .dashboard-button.add-location__button {
+        @include Flex(column);
+        padding: 2rem 1.5rem;
+        font-size: 2.2rem;
+        margin-left: 2.4rem;
+
+        svg {
+            margin: 0;
+            margin-bottom: 1rem;
+            font-size: 3rem;
+        }
+    }
+
+    .week-schedule {
+        width: 100%;
+        height: 250px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 1.5rem;
+
+        .day-schedule {
+            border: 2px solid #424242;
+            padding: 1.5rem 1rem;
+
+            .day-schedule__date {
+                font-size: 1.8rem;
+                font-family: $body;
+                text-transform: uppercase;
+                padding-bottom: 1rem;
+                border-bottom: 1px solid $black;
+                line-height: 2.4rem;
+            }
+
+            .day-schedule__pickup {
+                @include Flex(column, center, flex-start);
+                width: 95%;
+                margin: 1.4rem auto;
+
+                .pickup-info {
+
+                    .pickup-time-amount {
+                        @include HeaderFont;
+                        font-size: 2rem;
+                        color: $bg-dark;
+                    }
+
+                    .pickup-type {
+                        font-family: $body;
+                        font-size: 1.5rem;
+                        margin: 1rem 0;
+                        line-height: 2rem;
+                    }
+                }
+            }
+        }
+        
+    }
+}
+}

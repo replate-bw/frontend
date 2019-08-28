@@ -9,13 +9,19 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import Login from './components/login/Login';
 
+//Colins components
+
+import BusinessDashboard from './components/Business/BusinessDashboard';
+import NewPickupForm from './components/Business/BusinessDashboard';
+import VollunteerDashboard from './components/Volunteer/VolunteerDashboard';
+
 //dummy components to be removed
 import BusnDashboard from './components/JuliesDummyComponents/BusnDashboard';
-import VollunteerDashboard from './components/JuliesDummyComponents/VollunteerDashboard';
+import VollDashboard from './components/JuliesDummyComponents/VollDashboard';
 import Signup from './components/JuliesDummyComponents/Signup';
 
 function App () {
-	const [ user, setUser ] = useState(data);
+	const [ user, setUser ] = useState([]);
 
 	const getUser = currentUser => {
 		setUser(currentUser);
@@ -29,8 +35,15 @@ function App () {
 				<Navbar />
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/signup" component={Signup} />
-				<PrivateRoute path="/protected/voll/:id" component={VollunteerDashboard} />
+
+				{/* to be removed */}
+				<PrivateRoute path="/protected/voll/:id" component={VollDashboard} />
 				<PrivateRoute path="/protected/busn/:id" component={BusnDashboard} />
+
+				{/* Colins Components */}
+				<PrivateRoute path="/protected/vollunteer/" component={VollunteerDashboard} />
+				<PrivateRoute path="/protected/business/" component={BusinessDashboard} />
+				<PrivateRoute path="/protected/new-pickup/" render={props => <NewPickupForm {...props} />} />
 			</div>
 		</UserContext.Provider>
 	);
