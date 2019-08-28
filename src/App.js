@@ -1,22 +1,63 @@
-import React from 'react';
-import './scss/index.scss'
+import React, { useState, useEffect } from 'react';
+import './scss/index.scss';
+import Navbar from './components/Navbar';
+import data from './data/data';
+import axios from 'axios';
+import UserContext from './contexts/UserContext';
+import { Route } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import { axiosWithAuth } from './utils/axiosWithAuth';
+import Login from './components/login/Login';
 
-import Navbar from './components/Navbar'
-import BusinessDashboard from './components/Business/BusinessDashboard'
-import NewPickupForm from './components/Business/NewPickupForm'
-import { Route } from 'react-router-dom'
+//Colins components
+
+import BusinessDashboard from './components/Business/BusinessDashboard';
+import NewPickupForm from './components/Business/BusinessDashboard';
 import VolunteerDashboard from './components/Volunteer/VolunteerDashboard';
 
-function App() {
-  return (
-    <>
-      <Navbar />
-      <BusinessDashboard />
-      <VolunteerDashboard />
+//dummy components to be removed
+import BusnDashboard from './components/JuliesDummyComponents/BusnDashboard';
+import VolDashboard from './components/JuliesDummyComponents/VolDashboard';
+import SignupVolunteer from './components/JuliesDummyComponents/SignupVolunteer';
+import SignupBusiness from './components/JuliesDummyComponents/SignupBusiness';
+import Signup from './components/JuliesDummyComponents/Signup';
 
-      <Route path='/new-pickup' render={props => <NewPickupForm {...props} />} />
-    </>
-  );
+function App () {
+	const [ user, setUser ] = useState([]);
+
+	const getUser = currentUser => {
+		setUser(currentUser);
+	};
+
+	useEffect(
+		() => {
+			localStorage.setItem('user', JSON.stringify(user));
+		},
+		[ user ]
+	);
+
+	console.log(user, 'I am the current user');
+
+	return (
+		<UserContext.Provider value={{ user, setUser, getUser }}>
+			<div className="app">
+				<Navbar />
+				<Route exact path="/login" component={Login} />
+				<Route exact path="/signup" component={Signup} />
+				<Route exact path="/signup/volunteer" component={SignupVolunteer} />
+				<Route exact path="/signup/business" component={SignupBusiness} />
+
+				{/* to be removed */}
+				<PrivateRoute path="/protected/vol/:id" component={VolDashboard} />
+				<PrivateRoute path="/protected/busn/:id" component={BusnDashboard} />
+
+				{/* Colins Components */}
+				<PrivateRoute path="/protected/volunteer/:id" component={VolunteerDashboard} />
+				<PrivateRoute path="/protected/business/:id" component={BusinessDashboard} />
+				<PrivateRoute path="/protected/new-pickup/:id" render={props => <NewPickupForm {...props} />} />
+			</div>
+		</UserContext.Provider>
+	);
 }
 
 export default App;
