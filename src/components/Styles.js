@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
+// Kelly Code
 
+export const Test = styled.div `
+
+display: none;
+
+`;
 
 export const Sign = styled.div`
     margin: 0 auto;
@@ -8,11 +14,12 @@ export const Sign = styled.div`
     border: 2px solid #E3E1E1;
     border-radius: 12px;
     box-shadow: 5px 5px 8px #BFBFBF;
-    width: 20%;
+    width: 30%;
     align-items: center;
-    height: 400px;
+    height: 500px;
     display: flex;
     justify-content: center;
+    background: #3d4d41;
 `;
 
 export const Context = styled.div`
@@ -34,11 +41,12 @@ export const Context = styled.div`
             justify-content: space-between;
         }
     }
+    color: white;
 `;
 
 export const SignupBtn = styled.button`
-    background-color: #0A235C;
-    color: #FFCC00;
+    background-color: white;
+    color: #3d4d41;
     font-size: 14px;
     border-radius: 8px;
     padding: 8px 8px;
@@ -46,11 +54,23 @@ export const SignupBtn = styled.button`
     margin: 0 auto;
     margin-top: 5px;
     margin-bottom: 20px;
+    &:hover {
+        background: black;
+        color: white;
+        
+        { cursor: pointer; }
+    }
+
+    
+
 `;
 
 export const Header = styled.h2`
-    font-size: 18px;
-    color: #0A235C;
+    font-size: 22px;
+    color: white;
     text-align: center;
+    padding: 1rem;
+    padding-bottom: 4rem;
+    
 `;
 
