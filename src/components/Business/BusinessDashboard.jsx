@@ -21,7 +21,7 @@ const BusinessDashboard = props => {
         setLocations(res.data);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [locations]);
 
   const buttonHover = e => {
     const btn = e.target;
@@ -57,10 +57,10 @@ const BusinessDashboard = props => {
               ))}
 
               <Link
-			  	to='/protected/business/new-location'
+			  	to={`/protected/business/new-location/${id}`}
                 onMouseEnter={buttonHover}
                 onMouseLeave={buttonReturn}
-                className="dashboard-button add-location__button"
+				className="dashboard-button add-location__button"
               >
                 <FontAwesomeIcon icon={faPlusCircle} />
                 New

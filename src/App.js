@@ -53,10 +53,10 @@ function App () {
 				<PrivateRoute path="/protected/busn/:id" component={BusnDashboard} />
 
 				{/* Colins Components */}
-				<PrivateRoute path="/protected/volunteer" component={VolunteerDashboard} />
-				<PrivateRoute path="/protected/business" component={BusinessDashboard} />
-				<PrivateRoute path="/protected/business/new-pickup" component={NewPickupForm} />
-				<PrivateRoute path="/protected/business/new-location" component={NewLocationForm} />
+				<PrivateRoute path="/protected/volunteer/:id" component={VolunteerDashboard} />
+				<PrivateRoute path="/protected/business/:id" component={BusinessDashboard} />
+				<PrivateRoute path="/protected/business/new-pickup/:id" component={NewPickupForm} />
+				<PrivateRoute path="/protected/business/new-location/:id" component={NewLocationForm} />
 			</div>
 		</UserContext.Provider>
 	);

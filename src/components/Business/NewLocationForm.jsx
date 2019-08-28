@@ -9,6 +9,7 @@ import UserContext from '../../contexts/UserContext';
 
 
 const NewLocationForm = props => {
+    const id = props.match.params.id;
 
     const { errors, touched } = props;
 
@@ -16,7 +17,7 @@ const NewLocationForm = props => {
 
     useEffect(() => {
         TweenMax.to('.pickup-form', .3, {y: -12});
-    })
+    },[])
 
     const buttonHover = e => {
         const btn = e.target;
@@ -30,6 +31,7 @@ const NewLocationForm = props => {
 
     return (
         <div className='new-pickup__modal'>
+            {console.log('form id', id)}
             <FormikForm className='pickup-form' use='semantic-ui-react'>
                 <div className='form-content'>
                 <h1 className='pickup-form__header'>Add a new location</h1>
@@ -78,12 +80,14 @@ const NewLocationForm = props => {
 }
 
 const FormikLocationForm = withFormik({
-    mapPropsToValues({ address, city, state, zip }) {
+    mapPropsToValues({ address, city, state, zip, id }) {
         return {
             address: address || '',
             city: city || '',
             state: state || '',
-            zip: zip || ''
+            zip: zip || '',
+            business_id: id || ''
+
         }
     },
 
@@ -98,7 +102,8 @@ const FormikLocationForm = withFormik({
         axiosWithAuth()
         .post('https://replatedb.herokuapp.com/locations/', values)
         .then(res => {
-            console.log(res)
+            console.log(res.data);
+            props.history.push(`/protected/business/${props.id}`)
         })
         .catch(err => console.log(err))
     }
