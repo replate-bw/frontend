@@ -9,6 +9,7 @@ const VolunteerDashboard = props => {
 	const id = props.match.params.id;
 
 	const { user, setUser } = useContext(UserContext);
+	console.log(user, 'user in volunteer dashboard');
 
 	const buttonHover = e => {
 		const btn = e.target;

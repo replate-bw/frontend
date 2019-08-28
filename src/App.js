@@ -23,7 +23,7 @@ import SignupBusiness from './components/JuliesDummyComponents/SignupBusiness';
 import Signup from './components/JuliesDummyComponents/Signup';
 
 function App () {
-	const [ user, setUser ] = useState([]);
+	const [ user, setUser ] = useState(() => (localStorage.user ? JSON.parse(localStorage.user) : null));
 
 	const getUser = currentUser => {
 		setUser(currentUser);
@@ -48,12 +48,12 @@ function App () {
 				<Route exact path="/signup/business" component={SignupBusiness} />
 
 				{/* to be removed */}
-				<PrivateRoute path="/protected/vol/:id" component={VolDashboard} />
-				<PrivateRoute path="/protected/busn/:id" component={BusnDashboard} />
+				<PrivateRoute path="/protected/vol" component={VolDashboard} />
+				<PrivateRoute path="/protected/busn" component={BusnDashboard} />
 
 				{/* Colins Components */}
-				<PrivateRoute path="/protected/volunteer/:id" component={VolunteerDashboard} />
-				<PrivateRoute path="/protected/business/:id" component={BusinessDashboard} />
+				<PrivateRoute path="/protected/volunteer" component={VolunteerDashboard} />
+				<PrivateRoute path="/protected/business" component={BusinessDashboard} />
 				<PrivateRoute path="/protected/new-pickup/:id" render={props => <NewPickupForm {...props} />} />
 			</div>
 		</UserContext.Provider>
