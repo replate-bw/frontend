@@ -18,6 +18,8 @@ import VollunteerDashboard from './components/Volunteer/VolunteerDashboard';
 //dummy components to be removed
 import BusnDashboard from './components/JuliesDummyComponents/BusnDashboard';
 import VollDashboard from './components/JuliesDummyComponents/VollDashboard';
+import SignupVollunteer from './components/JuliesDummyComponents/SignupVollunteer';
+import SignupBusiness from './components/JuliesDummyComponents/SignupBusiness';
 import Signup from './components/JuliesDummyComponents/Signup';
 
 function App () {
@@ -25,6 +27,7 @@ function App () {
 
 	const getUser = currentUser => {
 		setUser(currentUser);
+		localStorage.setItem('user', JSON.stringify(user));
 	};
 
 	console.log(user, 'I am the current user');
@@ -35,6 +38,8 @@ function App () {
 				<Navbar />
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/signup" component={Signup} />
+				<Route exact path="/signup/vollunteer" component={SignupVollunteer} />
+				<Route exact path="/signup/business" component={SignupBusiness} />
 
 				{/* to be removed */}
 				<PrivateRoute path="/protected/voll/:id" component={VollDashboard} />

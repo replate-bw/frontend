@@ -13,14 +13,14 @@ const VollunteerDashboard = props => {
 			{!user ? (
 				<div>Loading...</div>
 			) : (
-				<div>
-					<p>{user.accountType}</p>
-					<p>{user.contact.firstName}</p>
-					<p>{user.contact.lastName}</p>
+				<div className="dummy-vollDasboard">
+					<p>Account Type: {user.accountType}</p>
+					<p>First Name: {user.contact.firstName}</p>
+					<p>Last Name: {user.contact.lastName}</p>
 
-					<p>{user.email}</p>
-					<p>{user.address}</p>
-					<p>{user.contact.phone}</p>
+					<p>Email: {user.email}</p>
+					<p>Address: {user.address}</p>
+					<p>Phone: {user.contact.phone}</p>
 				</div>
 			)}
 		</div>
@@ -28,11 +28,3 @@ const VollunteerDashboard = props => {
 };
 
 export default VollunteerDashboard;
-
-// {!user ? (
-// 	<div>Loading...</div>
-// ) : (
-// 	user.map(i => {
-// 		return <p>{i.name}</p>;
-// 	})
-// )}
