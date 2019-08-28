@@ -54,7 +54,7 @@ function App () {
 				{/* Colins Components */}
 				<PrivateRoute path="/protected/volunteer" component={VolunteerDashboard} />
 				<PrivateRoute path="/protected/business" component={BusinessDashboard} />
-				<PrivateRoute path="/protected/new-pickup/:id" render={props => <NewPickupForm {...props} />} />
+				<PrivateRoute path="/protected/new-pickup" component={NewPickupForm} />
 			</div>
 		</UserContext.Provider>
 	);
