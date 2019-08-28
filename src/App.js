@@ -13,6 +13,7 @@ import Login from './components/login/Login';
 
 import BusinessDashboard from './components/Business/BusinessDashboard';
 import NewPickupForm from './components/Business/NewPickupForm';
+import NewLocationForm from './components/Business/NewLocationForm';
 import VolunteerDashboard from './components/Volunteer/VolunteerDashboard';
 
 //dummy components to be removed
@@ -55,6 +56,7 @@ function App () {
 				<PrivateRoute path="/protected/volunteer" component={VolunteerDashboard} />
 				<PrivateRoute path="/protected/business" component={BusinessDashboard} />
 				<PrivateRoute path="/protected/business/new-pickup" component={NewPickupForm} />
+				<PrivateRoute path="/protected/business/new-location" component={NewLocationForm} />
 			</div>
 		</UserContext.Provider>
 	);

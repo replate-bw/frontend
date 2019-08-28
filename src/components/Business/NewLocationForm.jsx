@@ -8,7 +8,7 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import UserContext from '../../contexts/UserContext';
 
 
-const NewPickupForm = props => {
+const NewLocationForm = props => {
 
     const { errors, touched } = props;
 
@@ -32,7 +32,7 @@ const NewPickupForm = props => {
         <div className='new-pickup__modal'>
             <FormikForm className='pickup-form' use='semantic-ui-react'>
                 <div className='form-content'>
-                <h1 className='pickup-form__header'>Schedule an appointment for pickup</h1>
+                <h1 className='pickup-form__header'>Add a new location</h1>
             <div className='pickup-form__fields'>
             {/* <>
             <Form.Field>
@@ -43,23 +43,29 @@ const NewPickupForm = props => {
 
             <>
             <Form.Field>
-                <Field className='pickup-form__field' name='time' type='text' placeholder='Enter time' />
+                <Field className='pickup-form__field' name='address' type='text' placeholder='Enter address' />
             </Form.Field>
-            {touched.time && errors.time && <p className="error">{errors.time}</p>}
+            {touched.address && errors.address && <p className="error">{errors.address}</p>}
             </>
 
             <>
             <Form.Field>
-                <Field className='pickup-form__field' name='quantity' type='text' placeholder='Enter amount' />
+                <Field className='pickup-form__field' name='city' type='text' placeholder='Enter city' />
             </Form.Field>
-            {touched.quantity && errors.quantity && <p className="error">{errors.quantity}</p>}
+            {touched.city && errors.city && <p className="error">{errors.city}</p>}
             </>
 
             <>
             <Form.Field>
-                <Field className='pickup-form__field' name='type' type='text' placeholder='Enter type of food' />
+                <Field className='pickup-form__field' name='state' type='text' placeholder='Enter state' />
             </Form.Field>
-            {touched.type && errors.type && <p className="error">{errors.type}</p>}
+            {touched.state && errors.state && <p className="error">{errors.state}</p>}
+            </>
+            <>
+            <Form.Field>
+                <Field className='pickup-form__field' name='zip' type='text' placeholder='Enter zip code' />
+            </Form.Field>
+            {touched.zip && errors.zip && <p className="error">{errors.zip}</p>}
             </>
             </div>
 
@@ -71,31 +77,31 @@ const NewPickupForm = props => {
     )
 }
 
-const FormikPickupForm = withFormik({
-    mapPropsToValues({ time, quantity, type }) {
+const FormikLocationForm = withFormik({
+    mapPropsToValues({ address, city, state, zip }) {
         return {
-            time: time || '',
-            quantity: quantity || '',
-            type: type || '',
-            status: 'Open',
+            address: address || '',
+            city: city || '',
+            state: state || '',
+            zip: zip || ''
         }
     },
 
         validationSchema : Yup.object().shape({
-		// date: Yup.string().required('You cannot pass!!!'),
-        time: Yup.string().required('Cannot pass'),
-        quantity: Yup.string().required('You cannot pass!!!'),
-        type: Yup.string().required('You cannot pass!!!'),
+        address: Yup.string().required('Cannot pass'),
+        city: Yup.string().required('You cannot pass!!!'),
+        state: Yup.string().required('You cannot pass!!!'),
+        zip: Yup.string().required('You cannot pass!!!'),
 	}),
 
     handleSubmit(values, { props }) {
         axiosWithAuth()
-        .post('https://replatedb.herokuapp.com/appointments', values)
+        .post('https://replatedb.herokuapp.com/locations/', values)
         .then(res => {
             console.log(res)
         })
         .catch(err => console.log(err))
     }
-})(NewPickupForm)
+})(NewLocationForm)
 
-export default FormikPickupForm
+export default FormikLocationForm
