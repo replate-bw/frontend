@@ -4,10 +4,15 @@ import axios from 'axios';
 import * as Yup from 'yup';
 import { Form } from 'semantic-ui-react'
 import { TweenMax } from "gsap";
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import UserContext from '../../contexts/UserContext';
+
 
 const NewPickupForm = props => {
 
-    const { errors, touched, values } = props;
+    const { errors, touched } = props;
+
+    const {user, setUser} = useContext(UserContext);
 
     useEffect(() => {
         TweenMax.to('.pickup-form', .3, {y: -12});
@@ -29,12 +34,12 @@ const NewPickupForm = props => {
                 <div className='form-content'>
                 <h1 className='pickup-form__header'>Schedule an appointment for pickup</h1>
             <div className='pickup-form__fields'>
-            <>
+            {/* <>
             <Form.Field>
                 <Field className='pickup-form__field' name='date' type='text' placeholder='Enter date' />
             </Form.Field>
             {touched.date && errors.date && <p className="error">{errors.date}</p>}
-            </>
+            </> */}
 
             <>
             <Form.Field>
@@ -45,9 +50,9 @@ const NewPickupForm = props => {
 
             <>
             <Form.Field>
-                <Field className='pickup-form__field' name='amount' type='text' placeholder='Enter amount' />
+                <Field className='pickup-form__field' name='quantity' type='text' placeholder='Enter amount' />
             </Form.Field>
-            {touched.amount && errors.amount && <p className="error">{errors.amount}</p>}
+            {touched.quantity && errors.quantity && <p className="error">{errors.quantity}</p>}
             </>
 
             <>
@@ -67,24 +72,29 @@ const NewPickupForm = props => {
 }
 
 const FormikPickupForm = withFormik({
-    mapPropsToValues({ date, time, amount, type }) {
+    mapPropsToValues({ time, quantity, type}) {
         return {
-            date: date || '',
             time: time || '',
-            amount: amount || '',
-            type: type || ''
+            quantity: quantity || '',
+            type: type || '',
+            status: 'Open',
         }
     },
 
         validationSchema : Yup.object().shape({
-		date: Yup.string().required('You cannot pass!!!'),
+		// date: Yup.string().required('You cannot pass!!!'),
         time: Yup.string().required('Cannot pass'),
-        amount: Yup.string().required('You cannot pass!!!'),
+        quantity: Yup.string().required('You cannot pass!!!'),
         type: Yup.string().required('You cannot pass!!!'),
 	}),
 
     handleSubmit(values) {
-        console.log(values);
+        axiosWithAuth()
+        .post('https://replatedb.herokuapp.com/appointments', values)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => console.log(err))
     }
 })(NewPickupForm)
 
