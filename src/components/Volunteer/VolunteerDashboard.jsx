@@ -10,6 +10,8 @@ const VolunteerDashboard = props => {
 	const id = props.match.params.id;
 
 	const [pendingPickups, setPendingPickups] = useState([]);
+
+	const [accepted, setAccepted] = useState([]);
 	
 	const { user, setUser } = useContext(UserContext);
 
@@ -27,7 +29,7 @@ const VolunteerDashboard = props => {
 		axiosWithAuth()
 		.get('https://replatedb.herokuapp.com/appointments/mine')
 		.then(res => {
-			console.log(res)
+			console.log('mine', res)
 		})
 		.catch(err => console.log(err))
 	}, [])
@@ -58,7 +60,7 @@ const VolunteerDashboard = props => {
 								{pickup.type}
 							</p>
 							<p style={{ fontWeight: '600', letterSpacing: '1px' }} className="location-info">
-								{pickup.time}- {pickup.quantity}
+								{pickup.time} - {pickup.quantity}
 							</p>
 						</div>
 						<button className='dashboard-button accept-pickup__button'><FontAwesomeIcon icon={faPlusCircle} /></button>

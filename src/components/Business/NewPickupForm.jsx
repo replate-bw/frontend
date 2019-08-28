@@ -5,10 +5,12 @@ import * as Yup from 'yup';
 import { Form } from 'semantic-ui-react'
 import { TweenMax } from "gsap";
 
-const NewPickupForm = () => {
+const NewPickupForm = props => {
+
+    const { errors, touched, values } = props;
 
     useEffect(() => {
-        TweenMax.to('.pickup-form', .3, {y: -15});
+        TweenMax.to('.pickup-form', .3, {y: -12});
     })
 
     const buttonHover = e => {
@@ -31,24 +33,28 @@ const NewPickupForm = () => {
             <Form.Field>
                 <Field className='pickup-form__field' name='date' type='text' placeholder='Enter date' />
             </Form.Field>
+            {touched.date && errors.date && <p className="error">{errors.date}</p>}
             </>
 
             <>
             <Form.Field>
                 <Field className='pickup-form__field' name='time' type='text' placeholder='Enter time' />
             </Form.Field>
+            {touched.time && errors.time && <p className="error">{errors.time}</p>}
             </>
 
             <>
             <Form.Field>
                 <Field className='pickup-form__field' name='amount' type='text' placeholder='Enter amount' />
             </Form.Field>
+            {touched.amount && errors.amount && <p className="error">{errors.amount}</p>}
             </>
 
             <>
             <Form.Field>
                 <Field className='pickup-form__field' name='type' type='text' placeholder='Enter type of food' />
             </Form.Field>
+            {touched.type && errors.type && <p className="error">{errors.type}</p>}
             </>
             </div>
 
@@ -69,6 +75,13 @@ const FormikPickupForm = withFormik({
             type: type || ''
         }
     },
+
+        validationSchema : Yup.object().shape({
+		date: Yup.string().required('You cannot pass!!!'),
+        time: Yup.string().required('Cannot pass'),
+        amount: Yup.string().required('You cannot pass!!!'),
+        type: Yup.string().required('You cannot pass!!!'),
+	}),
 
     handleSubmit(values) {
         console.log(values);
