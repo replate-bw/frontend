@@ -8,6 +8,7 @@ import { Route } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import Login from './components/login/Login';
+import NavBarLogout from '../src/components/NavBar/NavBarLogout';
 
 //Colins components
 
@@ -42,6 +43,7 @@ function App () {
 		<UserContext.Provider value={{ user, setUser, getUser }}>
 			<div className="app">
 				<Navbar />
+				{/* <NavBarLogout /> */}
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/signup" component={Signup} />
 				<Route exact path="/signup/volunteer" component={SignupVolunteer} />

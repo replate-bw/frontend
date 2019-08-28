@@ -1,95 +1,89 @@
-
-
 .navbar {
-    @include Flex(row, flex-start, center);
-    background: $bg-dark;
-    height: 70px;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  
-    .nav-logo {
-      @include LogoFont;
-    }
-  
-    .nav-content {
-      @include Flex(row, flex-start, center);
-      width: 97%;
-      margin: 0 auto;
-      padding: 0 2.4rem;
-    }
-  
-    .nav-links {
-      @include Flex(row, space-between);
-      width: 38%;
-      margin-left: auto;
-  
-      .nav-link {
-        @include NavFont;
-        position: relative;
-        padding: 1rem 1rem;
-  
-        
-        &:before,
-        &:after {
-          content: '';
-          position: absolute;
-          bottom: 2px;
-          left: 0; right: 0;
-          height: 2px;
-          background: $nav-hover;
-        }
-        &:before {
-          opacity: 0;
-          transform: translateY(- $nav-distance);
-          transition: transform 0s $nav-easeOutBack, opacity 0s;
-        }
-        &:after {
-          opacity: 0;
-          transform: translateY($nav-distance/2);
-          transition: transform $nav-duration $nav-easeOutBack, opacity $nav-duration;
-        }
-        &:hover,
-        &:active {
-          color: $nav-hover;
-          &:before,
-          &:after {
-            opacity: 1;
-            transform: translateY(0);
-          }
-          &:before {
-            transition: transform $nav-duration $nav-easeOutBack, opacity $nav-duration;
-          }
-          &:after {
-            transition: transform 0s $nav-duration $nav-easeOutBack, opacity 0s $nav-duration;
-          }
-        }
-      }
-  
-           
-      
-    .nav-link.nav-link-active {
-        color: $white;
-  
-        &:before {
-          transition: none;
-        }
-  
-        &:after {
-          content: '';
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 2px;
-          height: 2px;
-          background: $white;
-          opacity: 1;
-          transition: none;
-          transform: translateY(0);
-        }
-      }
-        
-  
-    }
-  }
+	@include Flex(row, flex-start, center);
+	background: $bg-dark;
+	height: 70px;
+	width: 100%;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+
+	.nav-logo {
+		@include LogoFont;
+	}
+
+	.nav-content {
+		@include Flex(row, flex-start, center);
+		width: 97%;
+		margin: 0 auto;
+		padding: 0 2.4rem;
+	}
+
+	.nav-links {
+		@include Flex(row, space-between);
+		width: 38%;
+		margin-left: auto;
+
+		.nav-link {
+			@include NavFont;
+			position: relative;
+			padding: 1rem 1rem;
+
+			&:before,
+			&:after {
+				content: '';
+				position: absolute;
+				bottom: 2px;
+				left: 0;
+				right: 0;
+				height: 2px;
+				background: $nav-hover;
+			}
+			&:before {
+				opacity: 0;
+				transform: translateY(- $nav-distance);
+				transition: transform 0s $nav-easeOutBack, opacity 0s;
+			}
+			&:after {
+				opacity: 0;
+				transform: translateY($nav-distance/2);
+				transition: transform $nav-duration $nav-easeOutBack, opacity $nav-duration;
+			}
+			&:hover,
+			&:active {
+				color: $nav-hover;
+				&:before,
+				&:after {
+					opacity: 1;
+					transform: translateY(0);
+				}
+				&:before {
+					transition: transform $nav-duration $nav-easeOutBack, opacity $nav-duration;
+				}
+				&:after {
+					transition: transform 0s $nav-duration $nav-easeOutBack, opacity 0s $nav-duration;
+				}
+			}
+		}
+
+		.nav-link.nav-link-active {
+			color: $white;
+
+			&:before {
+				transition: none;
+			}
+
+			&:after {
+				content: '';
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 2px;
+				height: 2px;
+				background: $white;
+				opacity: 1;
+				transition: none;
+				transform: translateY(0);
+			}
+		}
+	}
+}
