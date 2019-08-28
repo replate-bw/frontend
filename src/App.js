@@ -13,12 +13,12 @@ import Login from './components/login/Login';
 
 import BusinessDashboard from './components/Business/BusinessDashboard';
 import NewPickupForm from './components/Business/BusinessDashboard';
-import VollunteerDashboard from './components/Volunteer/VolunteerDashboard';
+import VolunteerDashboard from './components/Volunteer/VolunteerDashboard';
 
 //dummy components to be removed
 import BusnDashboard from './components/JuliesDummyComponents/BusnDashboard';
-import VollDashboard from './components/JuliesDummyComponents/VollDashboard';
-import SignupVollunteer from './components/JuliesDummyComponents/SignupVollunteer';
+import VolDashboard from './components/JuliesDummyComponents/VolDashboard';
+import SignupVolunteer from './components/JuliesDummyComponents/SignupVolunteer';
 import SignupBusiness from './components/JuliesDummyComponents/SignupBusiness';
 import Signup from './components/JuliesDummyComponents/Signup';
 
@@ -27,8 +27,14 @@ function App () {
 
 	const getUser = currentUser => {
 		setUser(currentUser);
-		// localStorage.setItem('user', JSON.stringify(user));
 	};
+
+	useEffect(
+		() => {
+			localStorage.setItem('user', JSON.stringify(user));
+		},
+		[ user ]
+	);
 
 	console.log(user, 'I am the current user');
 
@@ -38,15 +44,15 @@ function App () {
 				<Navbar />
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/signup" component={Signup} />
-				<Route exact path="/signup/vollunteer" component={SignupVollunteer} />
+				<Route exact path="/signup/volunteer" component={SignupVolunteer} />
 				<Route exact path="/signup/business" component={SignupBusiness} />
 
 				{/* to be removed */}
-				<PrivateRoute path="/protected/voll/:id" component={VollDashboard} />
+				<PrivateRoute path="/protected/vol/:id" component={VolDashboard} />
 				<PrivateRoute path="/protected/busn/:id" component={BusnDashboard} />
 
 				{/* Colins Components */}
-				<PrivateRoute path="/protected/vollunteer/:id" component={VollunteerDashboard} />
+				<PrivateRoute path="/protected/volunteer/:id" component={VolunteerDashboard} />
 				<PrivateRoute path="/protected/business/:id" component={BusinessDashboard} />
 				<PrivateRoute path="/protected/new-pickup/:id" render={props => <NewPickupForm {...props} />} />
 			</div>

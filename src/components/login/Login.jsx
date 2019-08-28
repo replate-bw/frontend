@@ -65,7 +65,7 @@ const FormikLoginForm = withFormik({
 			.post('http://replatedb.herokuapp.com/auth/login', values)
 			.then((res) => {
                 console.log(res.data)
-                localStorage.setItem('token', res.data.payload);
+                localStorage.setItem('token', res.data.token);
                 setStatus(res.data)
                 const id = res.data.id
                 if (res.data.accountType === 'business') {
@@ -74,7 +74,7 @@ const FormikLoginForm = withFormik({
                 }
                 else {
                     console.log('I am a vollunteer')
-                    props.history.push(`/protected/vollunteer/${id}`)
+                    props.history.push(`/protected/volunteer/${id}`)
                 }
 			})
 			.catch((err) => console.log(err.response));

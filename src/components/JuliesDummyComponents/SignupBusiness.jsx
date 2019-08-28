@@ -56,7 +56,7 @@ const SignupBusiness = (props) => {
 				<Field className="login-input" component="select" name="accountType" data-testid="accountType">
                     <option value="select">Select</option>
                     <option value="business">Business</option>
-                    <option value="vollunteer">Vollunteer</option>
+                    <option value="volunteer">Vollunteer</option>
                 </Field>
 				{touched.accountType && errors.accountType && <p className="error">{errors.accountType}</p>}
                 </Form.Field>
@@ -113,7 +113,7 @@ const FormikLoginForm = withFormik({
 			.post('http://replatedb.herokuapp.com/auth/signup', values)
 			.then((res) => {
                 console.log(res.data)
-                localStorage.setItem('token', res.data.payload);
+                localStorage.setItem('token', res.data.token);
                 setStatus(res.data);
                 const id = res.data.id
                 if (res.data.accountType === 'business') {
