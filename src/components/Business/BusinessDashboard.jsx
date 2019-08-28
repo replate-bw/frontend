@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faPlus, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import React, { useContext, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { TweenMax } from 'gsap';
 import { Link } from 'react-router-dom';
 
@@ -10,6 +10,10 @@ const BusinessDashboard = props => {
 	const id = props.match.params.id;
 
 	const { user, setUser } = useContext(UserContext);
+
+	useEffect(() => {
+
+	}, [])
 
 	const buttonHover = e => {
 		const btn = e.target;
@@ -23,7 +27,9 @@ const BusinessDashboard = props => {
 
 	return (
 		<div className="dashboard">
-			<h1 className="dashboard-header">Tony & Alba's</h1>
+			{!user ? (<div>Loading...</div>) : (
+			<>
+			<h1 className="dashboard-header">{user.name}</h1>
 			<div className="dashboard-section">
 				<h3 className="dashboard-subheader">Our Locations</h3>
 				<div className="dashboard-locations">
@@ -40,7 +46,7 @@ const BusinessDashboard = props => {
 						onMouseEnter={buttonHover}
 						onMouseLeave={buttonReturn}
 						className="dashboard-button add-location__button">
-						{/* <FontAwesomeIcon icon={faPlusCircle} /> */}
+						<FontAwesomeIcon icon={faPlusCircle} />
 						New<br />Location
 					</Link>
 				</div>
@@ -48,11 +54,11 @@ const BusinessDashboard = props => {
 			<div className="dashboard-section">
 				<h3 className="dashboard-subheader">Scheduled Pickups</h3>
 				<Link
-					to="/new-pickup"
+					to="/protected/business/new-pickup"
 					onMouseEnter={buttonHover}
 					onMouseLeave={buttonReturn}
 					className="dashboard-button">
-					{/* <FontAwesomeIcon icon={faPlus} /> */}
+					<FontAwesomeIcon icon={faPlus} />
 					Make A Donation
 				</Link>
 			</div>
@@ -100,7 +106,9 @@ const BusinessDashboard = props => {
 					</div>
 				</div>
 			</div>
+			</>)}
 		</div>
+		
 	);
 };
 
