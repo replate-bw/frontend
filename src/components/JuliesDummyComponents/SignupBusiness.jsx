@@ -6,11 +6,6 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { Form } from 'semantic-ui-react';
 import UserContext from '../../contexts/UserContext'
 
-// So the 'name' field is the business name
-// When you sign up, you only send me the 'name' field if it's a businesss
-// So if it is not a business, you dont send me a name, and 'name' defaults to firstName + lastName
-
-
 const SignupBusiness = (props) => {
 
     const { getUser } = useContext(UserContext);
@@ -123,10 +118,10 @@ const FormikLoginForm = withFormik({
                 const id = res.data.id
                 if (res.data.accountType === 'business') {
                     
-                props.history.push(`/protected/busn/${id}`)
+                props.history.push(`/protected/business/${id}`)
                 }
                 else {
-                props.history.push(`/protected/voll/${id}`)
+                props.history.push(`/protected/vollunteer/${id}`)
                 }
 			})
 			.catch((err) => console.log(err.response));

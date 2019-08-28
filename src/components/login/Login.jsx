@@ -70,11 +70,11 @@ const FormikLoginForm = withFormik({
                 const id = res.data.id
                 if (res.data.accountType === 'business') {
                     
-                props.history.push(`/protected/busn/${id}`)
+                props.history.push(`/protected/business/${id}`)
                 }
                 else {
                     console.log('I am a vollunteer')
-                    props.history.push(`/protected/voll/${id}`)
+                    props.history.push(`/protected/vollunteer/${id}`)
                 }
 			})
 			.catch((err) => console.log(err.response));

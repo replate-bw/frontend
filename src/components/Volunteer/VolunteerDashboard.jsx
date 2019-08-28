@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faPlus, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { TweenMax } from 'gsap';
 import { Link } from 'react-router-dom';
+import UserContext from '../../contexts/UserContext';
 
-const VolunteerDashboard = () => {
+const VolunteerDashboard = props => {
+	const id = props.match.params.id;
+
+	const { user, setUser } = useContext(UserContext);
+
 	const buttonHover = e => {
 		const btn = e.target;
 		TweenMax.to(btn, 0.15, { y: -2 });
@@ -17,7 +22,7 @@ const VolunteerDashboard = () => {
 
 	return (
 		<div className="dashboard">
-			<h1 className="dashboard-header">Colin de Vries</h1>
+			<h1 className="dashboard-header">{user.contact.firstName}</h1>
 			<div className="dashboard-section">
 				<h3 className="dashboard-subheader">Pending Pickup Requests</h3>
 				<div className="dashboard-locations">

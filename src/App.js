@@ -27,7 +27,7 @@ function App () {
 
 	const getUser = currentUser => {
 		setUser(currentUser);
-		localStorage.setItem('user', JSON.stringify(user));
+		// localStorage.setItem('user', JSON.stringify(user));
 	};
 
 	console.log(user, 'I am the current user');
@@ -46,9 +46,9 @@ function App () {
 				<PrivateRoute path="/protected/busn/:id" component={BusnDashboard} />
 
 				{/* Colins Components */}
-				<PrivateRoute path="/protected/vollunteer/" component={VollunteerDashboard} />
-				<PrivateRoute path="/protected/business/" component={BusinessDashboard} />
-				<PrivateRoute path="/protected/new-pickup/" render={props => <NewPickupForm {...props} />} />
+				<PrivateRoute path="/protected/vollunteer/:id" component={VollunteerDashboard} />
+				<PrivateRoute path="/protected/business/:id" component={BusinessDashboard} />
+				<PrivateRoute path="/protected/new-pickup/:id" render={props => <NewPickupForm {...props} />} />
 			</div>
 		</UserContext.Provider>
 	);

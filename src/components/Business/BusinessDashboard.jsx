@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faPlus, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { TweenMax } from 'gsap';
 import { Link } from 'react-router-dom';
 
-const BusinessDashboard = () => {
+import UserContext from '../../contexts/UserContext';
+
+const BusinessDashboard = props => {
+	const id = props.match.params.id;
+
+	const { user, setUser } = useContext(UserContext);
+
 	const buttonHover = e => {
 		const btn = e.target;
 		TweenMax.to(btn, 0.15, { y: -2 });

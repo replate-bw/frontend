@@ -6,7 +6,6 @@ const BusnDashboard = props => {
 
 	const { user, setUser } = useContext(UserContext);
 
-	localStorage.setItem('user', JSON.stringify(user));
 	console.log(user, 'this is the business user');
 
 	return (
