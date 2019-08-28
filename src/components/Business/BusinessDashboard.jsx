@@ -14,6 +14,8 @@ const BusinessDashboard = props => {
 
   const [locations, setLocations] = useState([]);
 
+  const [appointments, setAppointments] = useState([]);
+
   useEffect(() => {
     axiosWithAuth()
       .get("https://replatedb.herokuapp.com/locations/")
@@ -22,6 +24,18 @@ const BusinessDashboard = props => {
       })
       .catch(err => console.log(err));
   }, [locations]);
+
+
+  useEffect(() => {
+    axiosWithAuth()
+      .get("https://replatedb.herokuapp.com/appointments/")
+      .then(res => {
+        setAppointments(res.data);
+      })
+      .catch(err => console.log(err));
+  }, [appointments]);
+
+
 
   const buttonHover = e => {
     const btn = e.target;
@@ -48,9 +62,9 @@ const BusinessDashboard = props => {
                   <div className="location-image" />
                   <div className="location-text">
                     <p className="location-info">
-                      111 Miller Drive
+                      {loc.address}
                       <br />
-                      San Jose CA, 95008
+                      {loc.city}, {loc.state} {loc.zip}
                     </p>
                   </div>
                 </div>
@@ -72,7 +86,7 @@ const BusinessDashboard = props => {
           <div className="dashboard-section">
             <h3 className="dashboard-subheader">Scheduled Pickups</h3>
             <Link
-              to="/protected/business/new-pickup"
+              to={`/protected/business/new-pickup/${id}`}
               onMouseEnter={buttonHover}
               onMouseLeave={buttonReturn}
               className="dashboard-button"
@@ -80,6 +94,19 @@ const BusinessDashboard = props => {
               <FontAwesomeIcon icon={faPlus} />
               Make A Donation
             </Link>
+			{appointments.map(app => (
+				 <div className="dashboard-location">
+				 <div className="location-text">
+				   <p className="location-info">
+					 {app.time}
+					 <br />
+					 {app.quantity}
+					 <br />
+					 {app.type}
+				   </p>
+				 </div>
+			   </div>
+			))}
           </div>
           <div className="dashboard-section">
             <h3 className="dashboard-subheader">Next Week's Schedule</h3>

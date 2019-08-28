@@ -10,9 +10,8 @@ import UserContext from '../../contexts/UserContext';
 
 const NewPickupForm = props => {
 
-    const { errors, touched } = props;
 
-    const {user, setUser} = useContext(UserContext);
+    const { errors, touched } = props;
 
     useEffect(() => {
         TweenMax.to('.pickup-form', .3, {y: -12});
@@ -72,12 +71,13 @@ const NewPickupForm = props => {
 }
 
 const FormikPickupForm = withFormik({
-    mapPropsToValues({ time, quantity, type }) {
+    mapPropsToValues({ time, quantity, type, status, id }) {
         return {
             time: time || '',
             quantity: quantity || '',
             type: type || '',
-            status: 'Open',
+            status: status || 'Open',
+            business_id: id || '' 
         }
     },
 
@@ -90,11 +90,12 @@ const FormikPickupForm = withFormik({
 
     handleSubmit(values, { props }) {
         axiosWithAuth()
-        .post('https://replatedb.herokuapp.com/appointments', values)
+        .post('https://replatedb.herokuapp.com/appointments/', values)
         .then(res => {
             console.log(res)
+            props.history.push(`/protected/business/${props.id}`)
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(values))
     }
 })(NewPickupForm)
 
