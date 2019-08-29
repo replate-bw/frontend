@@ -144,6 +144,7 @@ const NewPickupForm = props => {
               >
                 Submit
               </button>
+              <button onClick={() => props.history.push(`/protected/business/${id}`)} className='pickup-form__submit'>Cancel</button>
             </div>
           </FormikForm>
           </Formik>

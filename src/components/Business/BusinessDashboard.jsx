@@ -93,6 +93,7 @@ const BusinessDashboard = props => {
                       {loc.city}, {loc.state} {loc.zip}
                     </p>
                     <button onClick={() => deleteLocation(loc)} className='dashboard-delete'>X</button>
+                    <button>Edit</button>
                   </div>
                 </div>
               ))}
@@ -133,6 +134,7 @@ const BusinessDashboard = props => {
 				   </p>
 				 </div>
          <button onClick={() => deleteAppointment(app)} className='dashboard-delete'>X</button>
+         <button>Edit</button>
 			   </div>
 			))}
           </div>
