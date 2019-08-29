@@ -28,12 +28,21 @@ const BusinessDashboard = props => {
 
   useEffect(() => {
     axiosWithAuth()
-      .get("https://replatedb.herokuapp.com/appointments/")
+      .get("https://replatedb.herokuapp.com/appointments/mine")
       .then(res => {
         setAppointments(res.data);
       })
       .catch(err => console.log(err));
   }, [appointments]);
+
+  useEffect(() => {
+    axiosWithAuth()
+    .get("https://replatedb.herokuapp.com/locations/")
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => console.log(err));
+  }, [])
 
 
 
@@ -119,22 +128,6 @@ const BusinessDashboard = props => {
                   August 26, 2019
                 </div>
                 {/* map over appointments here */}
-                <div className="day-schedule__pickup">
-                  <div className="pickup-info">
-                    <div className="pickup-time-amount">7:00 PM - 25 lbs</div>
-                    <div className="pickup-type">
-                      Chicken, beans, vegetables
-                    </div>
-                  </div>
-                </div>
-                <div className="day-schedule__pickup">
-                  <div className="pickup-info">
-                    <div className="pickup-time-amount">7:00 PM - 25 lbs</div>
-                    <div className="pickup-type">
-                      Chicken, beans, vegetables, cole slaw, blahbalh
-                    </div>
-                  </div>
-                </div>
               </div>
               <div className="day-schedule">
                 <div className="day-schedule__date">

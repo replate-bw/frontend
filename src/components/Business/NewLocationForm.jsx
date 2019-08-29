@@ -9,13 +9,13 @@ import UserContext from '../../contexts/UserContext';
 
 
 const NewLocationForm = props => {
-    const id = props.id;
+    const id = props.match.params.id;
 
     const { errors, touched } = props;
 
     useEffect(() => {
         TweenMax.to('.pickup-form', .3, {y: -12});
-        console.log(props)
+        console.log('this is the id', id)
     },[])
 
     const buttonHover = e => {
@@ -102,6 +102,7 @@ const FormikLocationForm = withFormik({
         .post('https://replatedb.herokuapp.com/locations/', values)
         .then(res => {
             console.log(res.data);
+            console.log(values)
             props.history.push(`/protected/business/${props.id}`)
         })
         .catch(err => console.log(err))
