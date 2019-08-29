@@ -5,7 +5,7 @@ import styled from 'styled-components';
 export const Test = styled.div`display: none;`;
 
 export const Sign = styled.div`
-	margin-top: 5%;
+	margin-top: 150px;
 	border: 2px solid #e3e1e1;
 	border-radius: 5px;
 	box-shadow: 5px 5px 8px #bfbfbf;

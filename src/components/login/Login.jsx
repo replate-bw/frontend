@@ -8,6 +8,8 @@ import UserContext from '../../contexts/UserContext';
 
 const Login = (props) => {
 
+    console.log(props)
+
     const { getUser } = useContext(UserContext);
 
     const { errors, touched, values, handleSubmit, status } = props;
@@ -57,12 +59,15 @@ const FormikLoginForm = withFormik({
 	},
 
 	validationSchema : Yup.object().shape({
-		email     : Yup.string().required('You cannot pass!!!'),
-		password : Yup.string().min(6, 'Password has to be longer than 6 characters').required('Cannot pass'),		
+		email     : Yup.string().required('Please enter your email'),
+		password : Yup.string().required('Please enter your password'),		
 	}),
 
-	handleSubmit (values, { props, setStatus }) {
-		axiosWithAuth()
+	handleSubmit (values, { props, setStatus, handleSubmit: e}) {
+        // e.preventDefault()
+        
+        axiosWithAuth()
+        
 			.post('https://replatedb.herokuapp.com/auth/login', values)
 			.then((res) => {
                 console.log(res.data)

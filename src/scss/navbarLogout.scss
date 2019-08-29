@@ -1,11 +1,5 @@
-.navbar {
-	// @include Flex(row, flex-start, center);
-	// background: $bg-dark;
-	// height: 70px;
-	// width: 100%;
-	// position: sticky;
-	// top: 0;
-	// z-index: 100;
+.navbar-logout {
+	// display: block;
 	position: absolute;
 	background: $bg-dark;
 	height: 70px;
@@ -30,6 +24,7 @@
 		@include Flex(row, flex-end, space-between);
 		width: 46%;
 		margin-left: auto;
+		margin-top: 10px;
 
 		.nav-link {
 			@include NavFont;

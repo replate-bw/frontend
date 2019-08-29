@@ -7,6 +7,7 @@ import { axiosWithAuth } from './utils/axiosWithAuth';
 import Login from './components/login/Login';
 import NavBarLogout from '../src/components/NavBar/NavBarLogout';
 import Navbar from './components/NavBar/Navbar';
+import Footer from './components/Footer/Footer';
 
 //Colins components
 
@@ -46,7 +47,6 @@ function App () {
 		<UserContext.Provider value={{ user, setUser, getUser }}>
 			<div className="app">
 				<Navbar />
-				{/* <NavBarLogout /> */}
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/signup" component={Signup} />
 				<Route exact path="/signup/volunteer" component={SignupVolunteer} />
@@ -61,6 +61,7 @@ function App () {
 				<PrivateRoute path="/protected/business/:id" component={BusinessDashboard} />
 				<PrivateRoute path="/protected/business/new-pickup/:id" component={NewPickupForm} />
 				<PrivateRoute path="/protected/business/new-location/:id" component={NewLocationForm} />
+				<Footer />
 			</div>
 		</UserContext.Provider>
 	);
