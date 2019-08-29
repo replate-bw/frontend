@@ -53,10 +53,7 @@ const EditPickupForm = props => {
         onSubmit={values => {
         console.log(values)
           axiosWithAuth()
-            .post("https://replatedb.herokuapp.com/appointments/", {
-              ...values,
-              locationId: parseInt(values.locationId)
-            })
+            .put(`https://replatedb.herokuapp.com/appointments/${values.id}`, values)
             .then(res => {
               console.log(res);
               props.history.push(`/protected/business/${props.id}`);
