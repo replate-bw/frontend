@@ -10,11 +10,11 @@ import UserContext from '../../contexts/UserContext';
 
 const NewPickupForm = props => {
 
-
     const { errors, touched } = props;
 
     useEffect(() => {
         TweenMax.to('.pickup-form', .3, {y: -12});
+        console.log(props)
     })
 
     const buttonHover = e => {
