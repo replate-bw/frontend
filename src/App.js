@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './scss/index.scss';
-import Navbar from './components/Navbar';
 import data from './data/data';
 import axios from 'axios';
 import UserContext from './contexts/UserContext';
@@ -9,6 +8,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import Login from './components/login/Login';
 import NavBarLogout from '../src/components/NavBar/NavBarLogout';
+import Navbar from './components/NavBar/NavBar.js';
 
 //Colins components
 

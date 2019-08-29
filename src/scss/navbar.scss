@@ -20,7 +20,7 @@
 
 	.nav-links {
 		@include Flex(row, space-between);
-		width: 38%;
+		width: 40%;
 		margin-left: auto;
 
 		.nav-link {

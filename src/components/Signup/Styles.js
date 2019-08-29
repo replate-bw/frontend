@@ -5,11 +5,11 @@ import styled from 'styled-components';
 export const Test = styled.div`display: none;`;
 
 export const Sign = styled.div`
-	margin: 40px auto 0 auto;
+	margin-top: 5%;
 	border: 2px solid #e3e1e1;
 	border-radius: 5px;
 	box-shadow: 5px 5px 8px #bfbfbf;
-	width: 50%;
+	width: 400px;
 	align-items: center;
 	height: auto;
 	display: flex;
@@ -24,7 +24,7 @@ export const Context = styled.div`
 	align-items: center;
 	font-size: 16px;
 	margin-bottom: 2px;
-	width: 340px;
+	width: 100%;
 	.form-group {
 		display: flex;
 		align-items: center;

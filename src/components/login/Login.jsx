@@ -21,11 +21,13 @@ const Login = (props) => {
 	return (
         <>
         <div className="login-panel">
-        <h1 classname="login-title">Login</h1>
+        <div classname="login-title">
+        <h1>Login</h1>
+        </div>
 			<FormikForm use="semantic-ui-react">
                 <div>
                 <Form.Field>
-				<Field className="login-input" type="email" name="email" data-testid="email" placeholder="Email" />
+				<Field className="login-input one" type="email" name="email" data-testid="email" placeholder="Email" />
                 {touched.email && errors.email && <p className="error">{errors.email}</p>}
                 </Form.Field>
                 </div>

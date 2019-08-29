@@ -44,7 +44,7 @@ const Signup = props => {
 					props.history.push(`/protected/business/${id}`);
 				}
 				else {
-					props.history.push(`/protected/volunteer/${id}`);
+					this.props.history.push(`/protected/volunteer/${id}`);
 				}
 			})
 			.catch(err => console.log('error in signup', err));
@@ -110,7 +110,7 @@ const Signup = props => {
 							<div className="form-group">
 								{/* <label>Last Name: </label> */}
 								<input
-									style={{ width: '340px' }}
+									style={{ width: '320px' }}
 									type="lastName"
 									name="lastName"
 									className="form-group"
@@ -125,7 +125,7 @@ const Signup = props => {
 							<div className="form-group">
 								{/* <label>First Name: </label> */}
 								<input
-									style={{ width: '340px' }}
+									style={{ width: '320px' }}
 									type="firstName"
 									name="firstName"
 									className="form-group"
