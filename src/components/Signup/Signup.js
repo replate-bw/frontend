@@ -44,7 +44,7 @@ const Signup = props => {
 					props.history.push(`/protected/business/${id}`);
 				}
 				else {
-					this.props.history.push(`/protected/volunteer/${id}`);
+					props.history.push(`/protected/volunteer/${id}`);
 				}
 			})
 			.catch(err => console.log('error in signup', err));
