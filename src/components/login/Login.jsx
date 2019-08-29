@@ -5,6 +5,7 @@ import { Form } from 'semantic-ui-react'
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import UserContext from '../../contexts/UserContext';
 import Footer from '../Footer/Footer'
+import NavBar from '../NavBar/Navbar'
 
 
 const Login = (props) => {
@@ -21,6 +22,7 @@ const Login = (props) => {
     
 	return (
         <>
+        <NavBar />
         <div className="login-panel">
         <div className="login-title">
         <h1>Login</h1>

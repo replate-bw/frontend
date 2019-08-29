@@ -46,7 +46,7 @@ function App () {
 	return (
 		<UserContext.Provider value={{ user, setUser, getUser }}>
 			<div className="app">
-				<Navbar />
+				{/* <Navbar /> */}
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/signup" component={Signup} />
 				<Route exact path="/signup/volunteer" component={SignupVolunteer} />
