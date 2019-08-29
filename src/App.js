@@ -61,7 +61,6 @@ function App () {
 				<PrivateRoute path="/protected/business/:id" component={BusinessDashboard} />
 				<PrivateRoute path="/protected/business/new-pickup/:id" component={NewPickupForm} />
 				<PrivateRoute path="/protected/business/new-location/:id" component={NewLocationForm} />
-				<Footer />
 			</div>
 		</UserContext.Provider>
 	);

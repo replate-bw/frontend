@@ -4,6 +4,7 @@ import { faPlus, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { TweenMax } from "gsap";
 import { Link } from "react-router-dom";
 import NavBarLogout from '../NavBar/NavBarLogout'
+import Footer from '../Footer/Footer'
 
 import UserContext from "../../contexts/UserContext";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
@@ -60,6 +61,7 @@ const BusinessDashboard = props => {
   return !user ? (
         <div>Loading...</div>
       ) : (
+      
         <>
         <NavBarLogout {...props}/>
         <div className="dashboard-body">
@@ -164,6 +166,7 @@ const BusinessDashboard = props => {
         </div>
       </div>
     </>
+
 )}
   
 

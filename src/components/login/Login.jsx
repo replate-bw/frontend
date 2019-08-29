@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { Form } from 'semantic-ui-react'
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import UserContext from '../../contexts/UserContext';
+import Footer from '../Footer/Footer'
 
 
 const Login = (props) => {
@@ -46,6 +47,7 @@ const Login = (props) => {
             
 	
         </div>
+        <Footer />
         </>
 	);
 };

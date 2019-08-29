@@ -4,6 +4,7 @@ import axios from 'axios';
 import ReactDOM from 'react-dom';
 import UserContext from '../../contexts/UserContext';
 // import Signup from '../JuliesDummyComponents/Signup.jsx';
+import Footer from '../Footer/Footer'
 
 // Kelly Code
 
@@ -58,6 +59,7 @@ const Signup = props => {
 	);
 
 	return (
+		<>
 		<Sign>
 			<form onSubmit={handleSubmit}>
 				<Context>
@@ -199,6 +201,8 @@ const Signup = props => {
 				</Context>
 			</form>
 		</Sign>
+		<Footer />
+		</>
 	);
 };
 

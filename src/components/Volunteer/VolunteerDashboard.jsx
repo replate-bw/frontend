@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import NavBarLogout from '../NavBar/NavBarLogout';
+import Footer from '../Footer/Footer'
 
 const VolunteerDashboard = props => {
 	const id = props.match.params.id;
