@@ -34,6 +34,10 @@ function App () {
 	
 	const [locations, setLocations] = useState([]);
 
+	const [acceptedPickups, setAcceptedPickups] = useState([]);
+
+	const [pendingPickups, setPendingPickups] = useState([]);
+
 	const getUser = currentUser => {
 		setUser(currentUser);
 	};
@@ -48,7 +52,7 @@ function App () {
 	console.log(user, 'I am the current user');
 
 	return (
-		<UserContext.Provider value={{ user, setUser, getUser, appToEdit, setAppToEdit, locations, setLocations }}>
+		<UserContext.Provider value={{ user, setUser, getUser, appToEdit, setAppToEdit, locations, setLocations, acceptedPickups, setAcceptedPickups, pendingPickups, setPendingPickups }}>
 			<div className="app">
 				<Navbar />
 				{/* <NavBarLogout /> */}

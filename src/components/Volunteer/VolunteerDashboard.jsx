@@ -9,11 +9,9 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 const VolunteerDashboard = props => {
 	const id = props.match.params.id;
 
-	const [pendingPickups, setPendingPickups] = useState([]);
 
-	const [accepted, setAccepted] = useState([]);
 	
-	const { user, setUser } = useContext(UserContext);
+	const { user, setUser, acceptedPickups, setAcceptedPickups, pendingPickups, setPendingPickups } = useContext(UserContext);
 	console.log(user, 'user in volunteer dashboard');
 
 	useEffect(() => {
@@ -30,23 +28,30 @@ const VolunteerDashboard = props => {
 		axiosWithAuth()
 		.get('https://replatedb.herokuapp.com/appointments/mine')
 		.then(res => {
-			console.log('mine', res)
+			setAcceptedPickups(res.data);
 		})
 		.catch(err => console.log(err))
 	}, [])
 
-	console.log('vol dashboard', user);
-
-	const buttonHover = e => {
-		const btn = e.target;
-		TweenMax.to(btn, 0.15, { y: -2 });
-	};
-
-	const buttonReturn = e => {
-		const btn = e.target;
-		TweenMax.to(btn, 0.15, { y: 0 });
-	};
-
+	const acceptAppointment = item => {
+		axiosWithAuth()
+		.post(`https://replatedb.herokuapp.com/appointments/accept/${item.id}`)
+		.then(res => {
+			console.log(res)
+			setAcceptedPickups([...acceptedPickups, item])
+			
+		axiosWithAuth()
+		.get('https://replatedb.herokuapp.com/appointments')
+		.then(res => {
+			console.log('pending', res);
+			setPendingPickups(res.data);
+		})
+		.catch(err => console.log(err))
+		})
+		.catch(err => {
+			console.log(err)
+		})
+	}
 	return !user ? (
 		<div>Loading...</div>
 	) : (
@@ -66,7 +71,7 @@ const VolunteerDashboard = props => {
 								{pickup.time} - {pickup.quantity}
 							</p>
 						</div>
-						<button className='dashboard-button accept-pickup__button'><FontAwesomeIcon icon={faPlusCircle} /></button>
+						<button onClick={() => acceptAppointment(pickup)} className='dashboard-button accept-pickup__button'><FontAwesomeIcon icon={faPlusCircle} /></button>
 					</div>
 					)}
 					
@@ -74,6 +79,19 @@ const VolunteerDashboard = props => {
 			</div>
 			<div className="dashboard-section">
 				<h3 className="dashboard-subheader">Accepted Pickups</h3>
+				{acceptedPickups.map(pickup => 
+				acceptedPickups.length && <div className="dashboard-location">
+						<div className="location-image" />
+						<div className="location-text">
+							<p className="location-info">
+								{pickup.type}
+							</p>
+							<p style={{ fontWeight: '600', letterSpacing: '1px' }} className="location-info">
+								{pickup.time} - {pickup.quantity}
+							</p>
+						</div>
+				</div>
+					)}
 			</div>
 		</div>
 	);
