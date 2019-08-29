@@ -44,6 +44,23 @@ const BusinessDashboard = props => {
     .catch(err => console.log(err));
   }, [])
 
+  const deleteLocation = item => {
+    axiosWithAuth()
+    .delete(`https://replatedb.herokuapp.com/locations/${item.id}`)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => console.log(err));
+  }
+  const deleteAppointment = item => {
+    axiosWithAuth()
+    .delete(`https://replatedb.herokuapp.com/appointments/${item.id}`)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => console.log(err));
+  }
+
 
 
   const buttonHover = e => {
@@ -75,6 +92,7 @@ const BusinessDashboard = props => {
                       <br />
                       {loc.city}, {loc.state} {loc.zip}
                     </p>
+                    <button onClick={() => deleteLocation(loc)} className='dashboard-delete'>X</button>
                   </div>
                 </div>
               ))}
@@ -114,6 +132,7 @@ const BusinessDashboard = props => {
 					 {app.type}
 				   </p>
 				 </div>
+         <button onClick={() => deleteAppointment(app)} className='dashboard-delete'>X</button>
 			   </div>
 			))}
           </div>
