@@ -21,7 +21,7 @@ const Login = (props) => {
 	return (
         <>
         <div className="login-panel">
-        
+        <h1 classname="login-title">Login</h1>
 			<FormikForm use="semantic-ui-react">
                 <div>
                 <Form.Field>
@@ -37,7 +37,7 @@ const Login = (props) => {
                 </div>
 
                 <div>
-				<button className="login-button" onClick={handleSubmit} type="submit">LOGIN</button>
+				<button className="login-button" onClick={handleSubmit} type="submit">SUBMIT</button>
                 </div>
 			</FormikForm>
             

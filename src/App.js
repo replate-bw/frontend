@@ -16,12 +16,16 @@ import BusinessDashboard from './components/Business/BusinessDashboard';
 import NewPickupForm from './components/Business/BusinessDashboard';
 import VolunteerDashboard from './components/Volunteer/VolunteerDashboard';
 
+//Kellys components
+
+import Signup from './components/Signup/Signup';
+
 //dummy components to be removed
 import BusnDashboard from './components/JuliesDummyComponents/BusnDashboard';
 import VolDashboard from './components/JuliesDummyComponents/VolDashboard';
 import SignupVolunteer from './components/JuliesDummyComponents/SignupVolunteer';
 import SignupBusiness from './components/JuliesDummyComponents/SignupBusiness';
-import Signup from './components/JuliesDummyComponents/Signup';
+// import Signup from './components/JuliesDummyComponents/Signup';
 
 function App () {
 	const [ user, setUser ] = useState(() => (localStorage.user ? JSON.parse(localStorage.user) : null));
@@ -54,9 +58,9 @@ function App () {
 				<PrivateRoute path="/protected/busn" component={BusnDashboard} />
 
 				{/* Colins Components */}
-				<PrivateRoute path="/protected/volunteer" component={VolunteerDashboard} />
-				<PrivateRoute path="/protected/business" component={BusinessDashboard} />
-				<PrivateRoute path="/protected/new-pickup" component={NewPickupForm} />
+				<PrivateRoute path="/protected/volunteer/:id" component={VolunteerDashboard} />
+				<PrivateRoute path="/protected/business/:id" component={BusinessDashboard} />
+				<PrivateRoute path="/protected/new-pickup/:id" component={NewPickupForm} />
 			</div>
 		</UserContext.Provider>
 	);
