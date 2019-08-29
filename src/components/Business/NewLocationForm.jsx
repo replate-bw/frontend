@@ -9,6 +9,11 @@ import UserContext from '../../contexts/UserContext';
 
 
 const NewLocationForm = props => {
+
+    const { status } = props;
+
+    const { setLocations } = useContext(UserContext)
+
     const id = props.match.params.id;
 
     const { errors, touched } = props;
@@ -17,6 +22,10 @@ const NewLocationForm = props => {
         TweenMax.to('.pickup-form', .3, {y: -12});
         console.log('this is the id', id)
     },[])
+
+    useEffect(() => {
+        status && setLocations(locations => [...locations, status])
+    }, [status])
 
     const buttonHover = e => {
         const btn = e.target;
@@ -98,13 +107,14 @@ const FormikLocationForm = withFormik({
         zip: Yup.string().required('You cannot pass!!!'),
 	}),
 
-    handleSubmit(values, { props }) {
+    handleSubmit(values, { props: {history, match:{ params :{id} }}, setStatus }) {
         axiosWithAuth()
         .post('https://replatedb.herokuapp.com/locations/', values)
         .then(res => {
             console.log(res.data);
             console.log(values)
-            props.history.push(`/protected/business/${props.id}`)
+            setStatus(res.data)
+            history.push(`/protected/business/${id}`)
         })
         .catch(err => console.log(err))
     }

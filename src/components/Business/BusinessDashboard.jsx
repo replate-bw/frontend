@@ -10,9 +10,7 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth";
 const BusinessDashboard = props => {
   const id = props.match.params.id;
 
-  const { user, setUser } = useContext(UserContext);
-
-  const [locations, setLocations] = useState([]);
+  const { user, setUser, setAppToEdit, locations, setLocations } = useContext(UserContext);
 
   const [appointments, setAppointments] = useState([]);
 
@@ -21,9 +19,10 @@ const BusinessDashboard = props => {
       .get("https://replatedb.herokuapp.com/locations/")
       .then(res => {
         setLocations(res.data);
+        console.log(props);
       })
       .catch(err => console.log(err));
-  }, [locations]);
+  }, []);
 
 
   useEffect(() => {
@@ -49,6 +48,7 @@ const BusinessDashboard = props => {
     .delete(`https://replatedb.herokuapp.com/locations/${item.id}`)
     .then(res => {
       console.log(res)
+      setLocations(locations.filter(loc => loc.id !== item.id))
     })
     .catch(err => console.log(err));
   }
@@ -93,7 +93,6 @@ const BusinessDashboard = props => {
                       {loc.city}, {loc.state} {loc.zip}
                     </p>
                     <button onClick={() => deleteLocation(loc)} className='dashboard-delete'>X</button>
-                    <button>Edit</button>
                   </div>
                 </div>
               ))}
@@ -134,7 +133,7 @@ const BusinessDashboard = props => {
 				   </p>
 				 </div>
          <button onClick={() => deleteAppointment(app)} className='dashboard-delete'>X</button>
-         <button>Edit</button>
+         <Link onClick={() => setAppToEdit(app)} to={`/protected/business/edit-pickup/${id}`}>Edit</Link>
 			   </div>
 			))}
           </div>

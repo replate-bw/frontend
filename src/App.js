@@ -12,6 +12,7 @@ import Navbar from './components/NavBar/Navbar';
 
 import BusinessDashboard from './components/Business/BusinessDashboard';
 import NewPickupForm from './components/Business/NewPickupForm';
+import EditPickupForm from './components/Business/EditPickupForm';
 import NewLocationForm from './components/Business/NewLocationForm';
 import VolunteerDashboard from './components/Volunteer/VolunteerDashboard';
 
@@ -29,6 +30,10 @@ import SignupBusiness from './components/JuliesDummyComponents/SignupBusiness';
 function App () {
 	const [ user, setUser ] = useState(() => (localStorage.user ? JSON.parse(localStorage.user) : null));
 
+	const [appToEdit, setAppToEdit] = useState({});
+	
+	const [locations, setLocations] = useState([]);
+
 	const getUser = currentUser => {
 		setUser(currentUser);
 	};
@@ -43,7 +48,7 @@ function App () {
 	console.log(user, 'I am the current user');
 
 	return (
-		<UserContext.Provider value={{ user, setUser, getUser }}>
+		<UserContext.Provider value={{ user, setUser, getUser, appToEdit, setAppToEdit, locations, setLocations }}>
 			<div className="app">
 				<Navbar />
 				{/* <NavBarLogout /> */}
@@ -60,6 +65,7 @@ function App () {
 				<PrivateRoute path="/protected/volunteer/:id" component={VolunteerDashboard} />
 				<PrivateRoute path="/protected/business/:id" component={BusinessDashboard} />
 				<PrivateRoute path="/protected/business/new-pickup/:id" component={NewPickupForm} />
+				<PrivateRoute path="/protected/business/edit-pickup/:id" component={EditPickupForm} />
 				<PrivateRoute path="/protected/business/new-location/:id" component={NewLocationForm} />
 			</div>
 		</UserContext.Provider>
