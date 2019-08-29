@@ -2,16 +2,20 @@ html,
 body {
 	height: 100%;
 	width: 100%;
-	background: #3d4d41;
-	background: lighten(#c6dad5, 9%);
+	// background: #3d4d41;
+	// background: lighten(#c6dad5, 9%);
+	background: url('../assets/igor-miske-N0u8bLrB_-g-unsplash.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .login-panel {
-	margin-top: 5%;
+	margin-top: 20%;
 	border: 1px solid lightgrey;
 	padding: 20px 40px 40px 40px;
 	border-radius: 5px;
 	background: #3d4d41;
+	// background-color: white;
 	text-align: center;
 	color: white;
 	font-size: 3em;
