@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Form as FormikForm, Field, withFormik } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { Form } from 'semantic-ui-react';
 import UserContext from '../../contexts/UserContext'
 

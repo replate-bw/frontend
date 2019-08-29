@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './scss/index.scss';
-import Navbar from './components/Navbar';
-import data from './data/data';
-import axios from 'axios';
 import UserContext from './contexts/UserContext';
 import { Route } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import Login from './components/login/Login';
+import NavBarLogout from '../src/components/NavBar/NavBarLogout';
+import Navbar from './components/NavBar/Navbar';
 
 //Colins components
 
@@ -16,12 +15,16 @@ import NewPickupForm from './components/Business/NewPickupForm';
 import NewLocationForm from './components/Business/NewLocationForm';
 import VolunteerDashboard from './components/Volunteer/VolunteerDashboard';
 
+//Kellys components
+
+import Signup from './components/Signup/Signup';
+
 //dummy components to be removed
 import BusnDashboard from './components/JuliesDummyComponents/BusnDashboard';
 import VolDashboard from './components/JuliesDummyComponents/VolDashboard';
 import SignupVolunteer from './components/JuliesDummyComponents/SignupVolunteer';
 import SignupBusiness from './components/JuliesDummyComponents/SignupBusiness';
-import Signup from './components/JuliesDummyComponents/Signup';
+// import Signup from './components/JuliesDummyComponents/Signup';
 
 function App () {
 	const [ user, setUser ] = useState(() => (localStorage.user ? JSON.parse(localStorage.user) : null));
@@ -32,7 +35,7 @@ function App () {
 
 	useEffect(
 		() => {
-			localStorage.setItem('user', JSON.stringify(user));
+			user && localStorage.setItem('user', JSON.stringify(user));
 		},
 		[ user ]
 	);
@@ -43,6 +46,7 @@ function App () {
 		<UserContext.Provider value={{ user, setUser, getUser }}>
 			<div className="app">
 				<Navbar />
+				{/* <NavBarLogout /> */}
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/signup" component={Signup} />
 				<Route exact path="/signup/volunteer" component={SignupVolunteer} />

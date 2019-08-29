@@ -1,17 +1,28 @@
-html,
-body {
-	height: 100%;
-	width: 100%;
-	background: #3d4d41;
-	background: lighten(#c6dad5, 9%);
-}
+// html,
+// body {
+// 	height: 100%;
+// 	width: 100%;
+// 	// background: #3d4d41;
+// 	// background: lighten(#c6dad5, 9%);
+// 	// background: url('../assets/igor-miske-N0u8bLrB_-g-unsplash.jpg');
+// 	background: url('../assets/jonathan-pielmayer-Gn64mz9hTqE-unsplash.jpg'); //like
+// 	// background: url('../assets/pepe-nero-FHtP6sKF7bY-unsplash.jpg');
+// 	// background: url('../assets/toa-heftiba-Y5HDSClIVeM-unsplash.jpg');
+// 	background-size: cover;
+// 	background-repeat: no-repeat;
+// }
 
 .login-panel {
-	margin-top: 10%;
+	margin-top: 5%;
 	border: 1px solid lightgrey;
-	padding: 20px;
+	padding: 20px 40px 40px 40px;
 	border-radius: 5px;
-	background-color: white;
+	background: #3d4d41;
+	// background-color: white;
+	text-align: center;
+	color: white;
+	font-size: 3em;
+	font-family: $header;
 	transition-property: width;
 	transition-duration: 0.5s;
 	transition-delay: 0s;
@@ -24,14 +35,20 @@ body {
 
 	.login-input {
 		width: 100%;
-		height: 40px;
+		height: 35px;
 		margin-top: 10px;
+		border-radius: 5px;
 	}
 
 	.login-button {
 		margin-top: 20px;
 		width: 100%;
 		height: 3rem;
+		border-radius: 5px;
+		&:hover {
+			background: black;
+			color: white;
+		}
 	}
 
 	.hidden {

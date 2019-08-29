@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Form as FormikForm, Field, withFormik } from 'formik';
-import axios from 'axios';
 import * as Yup from 'yup';
 import { Form } from 'semantic-ui-react'
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
@@ -20,11 +19,13 @@ const Login = (props) => {
 	return (
         <>
         <div className="login-panel">
-		
+        <div className="login-title">
+        <h1>Login</h1>
+        </div>
 			<FormikForm use="semantic-ui-react">
                 <div>
                 <Form.Field>
-				<Field className="login-input" type="email" name="email" data-testid="email" placeholder="Email" />
+				<Field className="login-input one" type="email" name="email" data-testid="email" placeholder="Email" />
                 {touched.email && errors.email && <p className="error">{errors.email}</p>}
                 </Form.Field>
                 </div>
@@ -36,7 +37,7 @@ const Login = (props) => {
                 </div>
 
                 <div>
-				<button className="login-button" onClick={handleSubmit} type="submit">LOGIN</button>
+				<button className="login-button" onClick={handleSubmit} type="submit">SUBMIT</button>
                 </div>
 			</FormikForm>
             
@@ -62,7 +63,7 @@ const FormikLoginForm = withFormik({
 
 	handleSubmit (values, { props, setStatus }) {
 		axiosWithAuth()
-			.post('http://replatedb.herokuapp.com/auth/login', values)
+			.post('https://replatedb.herokuapp.com/auth/login', values)
 			.then((res) => {
                 console.log(res.data)
                 localStorage.setItem('token', res.data.token);
@@ -70,11 +71,11 @@ const FormikLoginForm = withFormik({
                 const id = res.data.id
                 if (res.data.accountType === 'business') {
                     
-                props.history.push(`/protected/business`)
+                props.history.push(`/protected/business/${id}`)
                 }
                 else {
                     console.log('I am a vollunteer')
-                    props.history.push(`/protected/volunteer`)
+                    props.history.push(`/protected/volunteer/${id}`)
                 }
 			})
 			.catch((err) => console.log(err.response));
