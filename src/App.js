@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './scss/index.scss';
-import data from './data/data';
-import axios from 'axios';
 import UserContext from './contexts/UserContext';
 import { Route } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
@@ -36,7 +34,7 @@ function App () {
 
 	useEffect(
 		() => {
-			localStorage.setItem('user', JSON.stringify(user));
+			user && localStorage.setItem('user', JSON.stringify(user));
 		},
 		[ user ]
 	);

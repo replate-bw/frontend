@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Form as FormikForm, Field, withFormik } from 'formik';
-import axios from 'axios';
 import * as Yup from 'yup';
 import { Form } from 'semantic-ui-react'
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
@@ -20,7 +19,7 @@ const Login = (props) => {
 	return (
         <>
         <div className="login-panel">
-        <div classname="login-title">
+        <div className="login-title">
         <h1>Login</h1>
         </div>
 			<FormikForm use="semantic-ui-react">
@@ -64,7 +63,7 @@ const FormikLoginForm = withFormik({
 
 	handleSubmit (values, { props, setStatus }) {
 		axiosWithAuth()
-			.post('http://replatedb.herokuapp.com/auth/login', values)
+			.post('https://replatedb.herokuapp.com/auth/login', values)
 			.then((res) => {
                 console.log(res.data)
                 localStorage.setItem('token', res.data.token);
@@ -72,11 +71,11 @@ const FormikLoginForm = withFormik({
                 const id = res.data.id
                 if (res.data.accountType === 'business') {
                     
-                props.history.push(`/protected/business/:id`)
+                props.history.push(`/protected/business/${id}`)
                 }
                 else {
                     console.log('I am a vollunteer')
-                    props.history.push(`/protected/volunteer/:id`)
+                    props.history.push(`/protected/volunteer/${id}`)
                 }
 			})
 			.catch((err) => console.log(err.response));

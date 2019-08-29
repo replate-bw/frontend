@@ -61,9 +61,9 @@ const Signup = props => {
 		<Sign>
 			<form onSubmit={handleSubmit}>
 				<Context>
-					<h1 className="signup-header">
+					<div className="signup-header">
 						<h2>Sign Up</h2>
-					</h1>
+					</div>
 
 					<div className="form-group">
 						{/* <label>Account Type:</label> */}
