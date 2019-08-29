@@ -8,7 +8,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import Login from './components/login/Login';
 import NavBarLogout from '../src/components/NavBar/NavBarLogout';
-import Navbar from './components/NavBar/NavBar.js';
+import Navbar from './components/NavBar/Navbar';
 
 //Colins components
 
