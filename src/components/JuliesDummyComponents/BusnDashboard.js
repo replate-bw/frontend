@@ -15,6 +15,7 @@ const BusnDashboard = props => {
 				<div>Loading...</div>
 			) : (
 				<div className="dummy-vollDasboard">
+					{console.log(user)}
 					<p>Account Type: {user.accountType}</p>
 					<p>Business Name: {user.name}</p>
 					<p>First Name: {user.firstName}</p>

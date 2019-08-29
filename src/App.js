@@ -11,7 +11,8 @@ import Navbar from './components/NavBar/Navbar';
 //Colins components
 
 import BusinessDashboard from './components/Business/BusinessDashboard';
-import NewPickupForm from './components/Business/BusinessDashboard';
+import NewPickupForm from './components/Business/NewPickupForm';
+import NewLocationForm from './components/Business/NewLocationForm';
 import VolunteerDashboard from './components/Volunteer/VolunteerDashboard';
 
 //Kellys components
@@ -58,7 +59,8 @@ function App () {
 				{/* Colins Components */}
 				<PrivateRoute path="/protected/volunteer/:id" component={VolunteerDashboard} />
 				<PrivateRoute path="/protected/business/:id" component={BusinessDashboard} />
-				<PrivateRoute path="/protected/new-pickup/:id" component={NewPickupForm} />
+				<PrivateRoute path="/protected/business/new-pickup/:id" component={NewPickupForm} />
+				<PrivateRoute path="/protected/business/new-location/:id" component={NewLocationForm} />
 			</div>
 		</UserContext.Provider>
 	);
