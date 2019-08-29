@@ -49,8 +49,8 @@ function App () {
 				<Route exact path="/signup/business" component={SignupBusiness} />
 
 				{/* to be removed */}
-				<PrivateRoute path="/protected/vol/:id" component={VolDashboard} />
-				<PrivateRoute path="/protected/busn/:id" component={BusnDashboard} />
+				<PrivateRoute path="/protected/vol" component={VolDashboard} />
+				<PrivateRoute path="/protected/busn" component={BusnDashboard} />
 
 				{/* Colins Components */}
 				<PrivateRoute path="/protected/volunteer/:id" component={VolunteerDashboard} />
