@@ -11,6 +11,14 @@ html,
 body {
 	height: 100%;
 	width: 100%;
+	// background: #3d4d41;
+	// background: lighten(#c6dad5, 9%);
+	// background: url('../assets/igor-miske-N0u8bLrB_-g-unsplash.jpg');
+	background: url('../assets/jonathan-pielmayer-Gn64mz9hTqE-unsplash.jpg'); //like
+	// background: url('../assets/pepe-nero-FHtP6sKF7bY-unsplash.jpg');
+	// background: url('../assets/toa-heftiba-Y5HDSClIVeM-unsplash.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .app {
