@@ -19,14 +19,13 @@
 	}
 
 	.nav-links {
-		@include Flex(row, flex-end, space-between);
-		width: 46%;
+		@include Flex(row, space-between);
 		margin-left: auto;
-
 		.nav-link {
 			@include NavFont;
 			position: relative;
 			padding: 1rem 1rem;
+			margin: 0 1.5rem;
 
 			&:before,
 			&:after {

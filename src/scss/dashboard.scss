@@ -107,7 +107,10 @@
             margin: 0;
             font-size: 3rem;
         }
+
+
     }
+
 
     .dashboard-button.add-location__button {
         @include Flex(column);
@@ -121,6 +124,7 @@
             font-size: 3rem;
         }
     }
+
 
     .week-schedule {
         width: 100%;

@@ -93,7 +93,7 @@ const BusinessDashboard = props => {
                     </p>
                     <button
                       onClick={() => deleteLocation(loc)}
-                      className="dashboard-function"
+                      className="dashboard-button dashboard-function"
                     >
                       X
                     </button>
@@ -129,27 +129,42 @@ const BusinessDashboard = props => {
               {appointments.map(app => (
                 <div className="dashboard-location">
                   <div className="location-text">
-                    <p className="location-info">
-                      {app.time}
-                      <br />
-                      {app.quantity}
-                      <br />
-                      {app.type}
-                    </p>
+                    <p className="location-info">Time: {app.time}</p>
+                    <p className="location-info">Quantity: {app.quantity}</p>
+
+                    <p className="location-info">Type: {app.type}</p>
                   </div>
-                  <button
-                    onClick={() => deleteAppointment(app)}
-                    className="dashboard-delete"
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      margin: "1.5rem 0"
+                    }}
                   >
-                    X
-                  </button>
-                  <Link
-                    className="dashboard-function"
-                    onClick={() => setAppToEdit(app)}
-                    to={`/protected/business/edit-pickup/${id}`}
-                  >
-                    Edit
-                  </Link>
+                    <button
+                      style={{
+                        fontSize: "1.8rem",
+                        padding: "1rem 2rem",
+                        marginLeft: "1.5rem"
+                      }}
+                      onClick={() => deleteAppointment(app)}
+                      className="dashboard-delete dashboard-button"
+                    >
+                      X
+                    </button>
+                    <Link
+                      style={{
+                        fontSize: "2rem",
+                        textTransform: "uppercase",
+                        marginLeft: "2rem"
+                      }}
+                      className="dashboard-function"
+                      onClick={() => setAppToEdit(app)}
+                      to={`/protected/business/edit-pickup/${id}`}
+                    >
+                      Edit
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>
