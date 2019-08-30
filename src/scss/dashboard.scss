@@ -2,6 +2,12 @@
     width: 85%;
     margin: 4.8rem auto;
 
+    .dashboard-body {
+        width: 100%;
+        background: #3d4d41;
+        background: lighten(#c6dad5, 9%);
+    }
+
     .dashboard-header {
         @include HeaderFont;
         font-size: 6rem;

@@ -1,22 +1,23 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Navbar = props => {
+const NavBarLogout = props => {
+	console.log(props);
+
+	const handleClick = e => {
+		e.preventDefault();
+		window.localStorage.removeItem('token');
+		window.localStorage.removeItem('user');
+		props.history.push('/login');
+	};
+
 	return (
-		<div className="navbar">
+		<div className="navbar-logout">
 			<div className="nav-content">
 				<div className="nav-logo">replate</div>
-
 				<div className="nav-links">
-					<NavLink exact to="/" className="nav-link" activeClassName="nav-link-active">
-						Home
-					</NavLink>
-					<NavLink to="/about" className="nav-link" activeClassName="nav-link-active">
-						About
-					</NavLink>
-					<NavLink to="/login" className="nav-link" activeClassName="nav-link-active">
+					<NavLink onClick={handleClick} to="/logout" className="nav-link" activeClassName="nav-link-active">
 						Logout
-						{localStorage.removeItem('token')}
 					</NavLink>
 				</div>
 			</div>
@@ -24,4 +25,4 @@ const Navbar = props => {
 	);
 };
 
-export default Navbar;
+export default NavBarLogout;

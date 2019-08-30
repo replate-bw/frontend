@@ -4,9 +4,13 @@ import * as Yup from 'yup';
 import { Form } from 'semantic-ui-react'
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import UserContext from '../../contexts/UserContext';
+import Footer from '../Footer/Footer'
+import NavBar from '../NavBar/Navbar'
 
 
 const Login = (props) => {
+
+    console.log(props)
 
     const { getUser } = useContext(UserContext);
 
@@ -18,6 +22,7 @@ const Login = (props) => {
     
 	return (
         <>
+        <NavBar />
         <div className="login-panel">
         <div className="login-title">
         <h1>Login</h1>
@@ -44,6 +49,7 @@ const Login = (props) => {
             
 	
         </div>
+        <Footer />
         </>
 	);
 };
@@ -57,12 +63,15 @@ const FormikLoginForm = withFormik({
 	},
 
 	validationSchema : Yup.object().shape({
-		email     : Yup.string().required('You cannot pass!!!'),
-		password : Yup.string().min(6, 'Password has to be longer than 6 characters').required('Cannot pass'),		
+		email     : Yup.string().required('Please enter your email'),
+		password : Yup.string().required('Please enter your password'),		
 	}),
 
-	handleSubmit (values, { props, setStatus }) {
-		axiosWithAuth()
+	handleSubmit (values, { props, setStatus, handleSubmit: e}) {
+        // e.preventDefault()
+        
+        axiosWithAuth()
+        
 			.post('https://replatedb.herokuapp.com/auth/login', values)
 			.then((res) => {
                 console.log(res.data)

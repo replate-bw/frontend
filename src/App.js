@@ -7,6 +7,7 @@ import { axiosWithAuth } from './utils/axiosWithAuth';
 import Login from './components/login/Login';
 import NavBarLogout from '../src/components/NavBar/NavBarLogout';
 import Navbar from './components/NavBar/Navbar';
+import Footer from './components/Footer/Footer';
 
 //Colins components
 
@@ -54,8 +55,7 @@ function App () {
 	return (
 		<UserContext.Provider value={{ user, setUser, getUser, appToEdit, setAppToEdit, locations, setLocations, acceptedPickups, setAcceptedPickups, pendingPickups, setPendingPickups }}>
 			<div className="app">
-				<Navbar />
-				{/* <NavBarLogout /> */}
+				{/* <Navbar /> */}
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/signup" component={Signup} />
 				<Route exact path="/signup/volunteer" component={SignupVolunteer} />

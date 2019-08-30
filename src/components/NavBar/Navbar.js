@@ -23,12 +23,12 @@ const Navbar = props => {
             >
               About
             </NavLink> */}
-					<NavLink to="/signup" className="nav-link" activeClassName="nav-link-active">
+					{/* <NavLink to="/signup" className="nav-link" activeClassName="nav-link-active">
 						Sign Up
 					</NavLink>
 					<NavLink to="/login" className="nav-link" activeClassName="nav-link-active">
 						Login
-					</NavLink>
+					</NavLink> */}
 				</div>
 			</div>
 		</div>

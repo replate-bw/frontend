@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { TweenMax } from "gsap";
 import { Link } from "react-router-dom";
+import NavBarLogout from '../NavBar/NavBarLogout'
+import Footer from '../Footer/Footer'
 
 import UserContext from "../../contexts/UserContext";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
@@ -33,7 +35,7 @@ const BusinessDashboard = props => {
         setAppointments(res.data);
       })
       .catch(err => console.log(err));
-  }, [appointments]);
+  }, []);
 
   useEffect(() => {
     axiosWithAuth()
@@ -72,12 +74,14 @@ const BusinessDashboard = props => {
     TweenMax.to(btn, 0.15, { y: 0 });
   };
 
-  return (
-    <div className="dashboard">
-      {!user ? (
+  return !user ? (
         <div>Loading...</div>
       ) : (
+      
         <>
+        <NavBarLogout {...props}/>
+        <div className="dashboard-body">
+        <div className="dashboard">
           <h1 className="dashboard-header">{user.name}</h1>
           <div className="dashboard-section">
             <h3 className="dashboard-subheader">Our Locations</h3>
@@ -211,10 +215,13 @@ const BusinessDashboard = props => {
               </div>
             </div>
           </div>
-        </>
-      )}
-    </div>
-  );
-};
+        </div>
+      </div>
+    </>
+
+)}
+  
+
+
 
 export default BusinessDashboard;

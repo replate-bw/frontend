@@ -1,10 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import { TweenMax } from "gsap";
-import { Link } from "react-router-dom";
-import UserContext from "../../contexts/UserContext";
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import React, { useContext, useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { TweenMax } from 'gsap';
+import { Link } from 'react-router-dom';
+import UserContext from '../../contexts/UserContext';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import NavBarLogout from '../NavBar/NavBarLogout';
+import Footer from '../Footer/Footer'
 
 const VolunteerDashboard = props => {
   const id = props.match.params.id;
@@ -60,6 +62,8 @@ const VolunteerDashboard = props => {
   return !user ? (
     <div>Loading...</div>
   ) : (
+	<>
+	<NavBarLogout {...props}/>
     <div className="dashboard">
       <h1 className="dashboard-header">
         {user.contact.firstName} {user.contact.lastName}
@@ -112,6 +116,7 @@ const VolunteerDashboard = props => {
         </div>
       </div>
     </div>
+	</>
   );
 };
 
