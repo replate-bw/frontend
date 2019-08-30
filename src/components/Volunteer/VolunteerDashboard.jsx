@@ -64,6 +64,7 @@ const VolunteerDashboard = props => {
   ) : (
 	<>
 	<NavBarLogout {...props}/>
+	<div className="dashboard-container">
     <div className="dashboard">
       <h1 className="dashboard-header">
         {user.contact.firstName} {user.contact.lastName}
@@ -116,6 +117,7 @@ const VolunteerDashboard = props => {
         </div>
       </div>
     </div>
+	</div>
 	</>
   );
 };

@@ -77,6 +77,7 @@ const BusinessDashboard = props => {
       ) : (
         <>
         <NavBarLogout {...props}/>
+        <div className="dashboard-container">
         <div className='dashboard-body'>
         <div className="dashboard">
           <h1 className="dashboard-header">{user.name}</h1>
@@ -213,6 +214,7 @@ const BusinessDashboard = props => {
             </div>
           </div>
         </div>
+      </div>
       </div>
       </>
 
