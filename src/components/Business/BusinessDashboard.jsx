@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { TweenMax } from "gsap";
 import { Link } from "react-router-dom";
+import NavBarLogout from '../NavBar/NavBarLogout'
+import Footer from '../Footer/Footer'
 
 import UserContext from "../../contexts/UserContext";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
@@ -10,21 +12,19 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth";
 const BusinessDashboard = props => {
   const id = props.match.params.id;
 
-  const { user, setUser } = useContext(UserContext);
-
-  const [locations, setLocations] = useState([]);
-
-  const [appointments, setAppointments] = useState([]);
+  const { user, setUser, setAppToEdit, locations, setLocations, appointments, setAppointments } = useContext(
+    UserContext
+  );
 
   useEffect(() => {
     axiosWithAuth()
       .get("https://replatedb.herokuapp.com/locations/")
       .then(res => {
         setLocations(res.data);
+        console.log(props);
       })
       .catch(err => console.log(err));
-  }, [locations]);
-
+  }, []);
 
   useEffect(() => {
     axiosWithAuth()
@@ -37,14 +37,30 @@ const BusinessDashboard = props => {
 
   useEffect(() => {
     axiosWithAuth()
-    .get("https://replatedb.herokuapp.com/locations/")
-    .then(res => {
-      console.log(res)
-    })
-    .catch(err => console.log(err));
-  }, [])
+      .get("https://replatedb.herokuapp.com/locations/")
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
-
+  const deleteLocation = item => {
+    axiosWithAuth()
+      .delete(`https://replatedb.herokuapp.com/locations/${item.id}`)
+      .then(res => {
+        console.log(res);
+        setLocations(locations.filter(loc => loc.id !== item.id));
+      })
+      .catch(err => console.log(err));
+  };
+  const deleteAppointment = item => {
+    axiosWithAuth()
+      .delete(`https://replatedb.herokuapp.com/appointments/${item.id}`)
+      .then(res => {
+        setAppointments(appointments.filter(app => app.id !== item.id));
+      })
+      .catch(err => console.log(err));
+  };
 
   const buttonHover = e => {
     const btn = e.target;
@@ -56,12 +72,13 @@ const BusinessDashboard = props => {
     TweenMax.to(btn, 0.15, { y: 0 });
   };
 
-  return (
-    <div className="dashboard">
-      {!user ? (
+  return !user ? (
         <div>Loading...</div>
       ) : (
         <>
+        <NavBarLogout {...props}/>
+        <div className='dashboard-body'>
+        <div className="dashboard">
           <h1 className="dashboard-header">{user.name}</h1>
           <div className="dashboard-section">
             <h3 className="dashboard-subheader">Our Locations</h3>
@@ -75,15 +92,21 @@ const BusinessDashboard = props => {
                       <br />
                       {loc.city}, {loc.state} {loc.zip}
                     </p>
+                    <button
+                      onClick={() => deleteLocation(loc)}
+                      className="dashboard-button dashboard-function"
+                    >
+                      X
+                    </button>
                   </div>
                 </div>
               ))}
 
               <Link
-			  	to={`/protected/business/new-location/${id}`}
+                to={`/protected/business/new-location/${id}`}
                 onMouseEnter={buttonHover}
                 onMouseLeave={buttonReturn}
-				className="dashboard-button add-location__button"
+                className="dashboard-button add-location__button"
               >
                 <FontAwesomeIcon icon={faPlusCircle} />
                 New
@@ -103,19 +126,49 @@ const BusinessDashboard = props => {
               <FontAwesomeIcon icon={faPlus} />
               Make A Donation
             </Link>
-			{appointments.map(app => (
-				 <div className="dashboard-location">
-				 <div className="location-text">
-				   <p className="location-info">
-					 {app.time}
-					 <br />
-					 {app.quantity}
-					 <br />
-					 {app.type}
-				   </p>
-				 </div>
-			   </div>
-			))}
+            <div className="dashboard-locations">
+              {appointments.map(app => (
+                <div className="dashboard-location">
+                  <div className="location-text">
+                    <p className="location-info">Time: {app.time}</p>
+                    <p className="location-info">Quantity: {app.quantity}</p>
+
+                    <p className="location-info">Type: {app.type}</p>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      margin: "1.5rem 0"
+                    }}
+                  >
+                    <button
+                      style={{
+                        fontSize: "1.8rem",
+                        padding: "1rem 2rem",
+                        marginLeft: "1.5rem"
+                      }}
+                      onClick={() => deleteAppointment(app)}
+                      className="dashboard-delete dashboard-button"
+                    >
+                      X
+                    </button>
+                    <Link
+                      style={{
+                        fontSize: "2rem",
+                        textTransform: "uppercase",
+                        marginLeft: "2rem"
+                      }}
+                      className="dashboard-function"
+                      onClick={() => setAppToEdit(app)}
+                      to={`/protected/business/edit-pickup/${id}`}
+                    >
+                      Edit
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="dashboard-section">
             <h3 className="dashboard-subheader">Next Week's Schedule</h3>
@@ -159,10 +212,14 @@ const BusinessDashboard = props => {
               </div>
             </div>
           </div>
-        </>
-      )}
-    </div>
-  );
-};
+        </div>
+      </div>
+      </>
+
+
+)}
+  
+
+
 
 export default BusinessDashboard;

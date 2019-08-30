@@ -1,19 +1,5 @@
-// html,
-// body {
-// 	height: 100%;
-// 	width: 100%;
-// 	// background: #3d4d41;
-// 	// background: lighten(#c6dad5, 9%);
-// 	// background: url('../assets/igor-miske-N0u8bLrB_-g-unsplash.jpg');
-// 	background: url('../assets/jonathan-pielmayer-Gn64mz9hTqE-unsplash.jpg'); //like
-// 	// background: url('../assets/pepe-nero-FHtP6sKF7bY-unsplash.jpg');
-// 	// background: url('../assets/toa-heftiba-Y5HDSClIVeM-unsplash.jpg');
-// 	background-size: cover;
-// 	background-repeat: no-repeat;
-// }
-
 .login-panel {
-	margin-top: 5%;
+	margin-top: 150px;
 	border: 1px solid lightgrey;
 	padding: 20px 40px 40px 40px;
 	border-radius: 5px;
@@ -36,7 +22,7 @@
 	.login-input {
 		width: 100%;
 		height: 35px;
-		margin-top: 10px;
+		margin-top: 20px;
 		border-radius: 5px;
 	}
 
@@ -53,5 +39,11 @@
 
 	.hidden {
 		display: none;
+	}
+
+	p.error {
+		font-size: 1rem;
+		margin-top: 3px;
+		padding: 0;
 	}
 }

@@ -7,19 +7,16 @@ import { TweenMax } from "gsap";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import UserContext from "../../contexts/UserContext";
 
-const NewPickupForm = props => {
-
-  const { appointments, setAppointments } = useContext(UserContext);
-
+const EditPickupForm = props => {
   const id = props.match.params.id;
-
-  const { status, history } = props;
 
   const [locations, setLocations] = useState([]);
 
+  const { appToEdit } = useContext(UserContext)
+
   useEffect(() => {
     TweenMax.to(".pickup-form", 0.3, { y: -12 });
-    console.log(id);
+    console.log(props);
   }, []);
 
   useEffect(() => {
@@ -31,11 +28,6 @@ const NewPickupForm = props => {
       })
       .catch(err => console.log(err));
   }, []);
-
-  useEffect(() => {
-    status && setAppointments(appointments => [...appointments, status])
-}, [status])
-
 
   const buttonHover = e => {
     const btn = e.target;
@@ -51,30 +43,20 @@ const NewPickupForm = props => {
     locations.length && (
         <div className="new-pickup__modal">
             <Formik
-        initialValues={{
-          time: "",
-          quantity: "",
-          type: "",
-          status: "Open",
-          locationId: locations[0].id
-        }}
+        initialValues={appToEdit}
+
         validationSchema={Yup.object().shape({
           time: Yup.string().required("Cannot pass"),
           quantity: Yup.string().required("You cannot pass!!!"),
           type: Yup.string().required("You cannot pass!!!")
         })}
-        onSubmit={(values, { setStatus }) => {
+        onSubmit={values => {
         console.log(values)
           axiosWithAuth()
-            .post("https://replatedb.herokuapp.com/appointments/", {
-              ...values,
-              locationId: parseInt(values.locationId)
-            })
+            .put(`https://replatedb.herokuapp.com/appointments/${values.id}`, values)
             .then(res => {
-
-              setStatus(res.data)
-              console.log('here is the id', id)
-              history.push(`/protected/business/${id}`);
+              console.log(res);
+              props.history.push(`/protected/business/${props.id}`);
             })
             .catch(err => console.log(err));
         }}
@@ -82,7 +64,7 @@ const NewPickupForm = props => {
           <FormikForm className="pickup-form" use="semantic-ui-react">
             <div className="form-content">
               <h1 className="pickup-form__header">
-                Schedule an appointment for pickup
+                Edit an appointment
               </h1>
               <div className="pickup-form__fields">
                 <>
@@ -154,7 +136,7 @@ const NewPickupForm = props => {
               >
                 Submit
               </button>
-              <button onClick={() => history.push(`/protected/business/${id}`)} className='pickup-form__submit'>Cancel</button>
+              <button onClick={() => props.history.push(`/protected/business/${id}`)} className='pickup-form__submit'>Cancel</button>
             </div>
           </FormikForm>
           </Formik>
@@ -164,4 +146,4 @@ const NewPickupForm = props => {
   );
 };
 
-export default NewPickupForm;
+export default EditPickupForm;

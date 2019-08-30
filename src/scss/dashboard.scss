@@ -1,6 +1,12 @@
 .dashboard {
     width: 85%;
     margin: 4.8rem auto;
+    padding-top: 70px;
+
+    .dashboard-body {
+        width: 100%;
+        background: lighten(#c6dad5, 9%);
+    }
 
     .dashboard-header {
         @include HeaderFont;
@@ -29,6 +35,7 @@
 
     .dashboard-location {
         min-width: 340px;
+        // max-width: 500px;
         border: 2px solid $bg-dark;
         border-radius: 5px;
         margin: 1.2rem 0;
@@ -50,6 +57,12 @@
         .location-text {
             width: 90%;
             margin: 0 auto;
+
+
+        }
+        .dashboard-function {
+            font-size: 1.8rem;
+            margin: 0 1rem;
         }
 
         .location-info {
@@ -100,7 +113,10 @@
             margin: 0;
             font-size: 3rem;
         }
+
+
     }
+
 
     .dashboard-button.add-location__button {
         @include Flex(column);
@@ -114,6 +130,7 @@
             font-size: 3rem;
         }
     }
+
 
     .week-schedule {
         width: 100%;
