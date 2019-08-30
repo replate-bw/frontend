@@ -8,9 +8,12 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import UserContext from "../../contexts/UserContext";
 
 const NewPickupForm = props => {
+
+  const { appointments, setAppointments } = useContext(UserContext);
+
   const id = props.match.params.id;
 
-  const { errors, touched } = props;
+  const { status, history } = props;
 
   const [locations, setLocations] = useState([]);
 
@@ -28,6 +31,11 @@ const NewPickupForm = props => {
       })
       .catch(err => console.log(err));
   }, []);
+
+  useEffect(() => {
+    status && setAppointments(appointments => [...appointments, status])
+}, [status])
+
 
   const buttonHover = e => {
     const btn = e.target;
@@ -55,7 +63,7 @@ const NewPickupForm = props => {
           quantity: Yup.string().required("You cannot pass!!!"),
           type: Yup.string().required("You cannot pass!!!")
         })}
-        onSubmit={values => {
+        onSubmit={(values, { setStatus }) => {
         console.log(values)
           axiosWithAuth()
             .post("https://replatedb.herokuapp.com/appointments/", {
@@ -63,8 +71,10 @@ const NewPickupForm = props => {
               locationId: parseInt(values.locationId)
             })
             .then(res => {
-              console.log(res);
-              props.history.push(`/protected/business/${props.id}`);
+
+              setStatus(res.data)
+              console.log('here is the id', id)
+              history.push(`/protected/business/${id}`);
             })
             .catch(err => console.log(err));
         }}
@@ -144,7 +154,7 @@ const NewPickupForm = props => {
               >
                 Submit
               </button>
-              <button onClick={() => props.history.push(`/protected/business/${id}`)} className='pickup-form__submit'>Cancel</button>
+              <button onClick={() => history.push(`/protected/business/${id}`)} className='pickup-form__submit'>Cancel</button>
             </div>
           </FormikForm>
           </Formik>

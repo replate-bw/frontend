@@ -12,11 +12,9 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth";
 const BusinessDashboard = props => {
   const id = props.match.params.id;
 
-  const { user, setUser, setAppToEdit, locations, setLocations } = useContext(
+  const { user, setUser, setAppToEdit, locations, setLocations, appointments, setAppointments } = useContext(
     UserContext
   );
-
-  const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
     axiosWithAuth()
@@ -35,7 +33,7 @@ const BusinessDashboard = props => {
         setAppointments(res.data);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [appointments]);
 
   useEffect(() => {
     axiosWithAuth()
@@ -59,7 +57,7 @@ const BusinessDashboard = props => {
     axiosWithAuth()
       .delete(`https://replatedb.herokuapp.com/appointments/${item.id}`)
       .then(res => {
-        console.log(res);
+        setAppointments(appointments.filter(app => app.id !== item.id));
       })
       .catch(err => console.log(err));
   };
@@ -77,10 +75,9 @@ const BusinessDashboard = props => {
   return !user ? (
         <div>Loading...</div>
       ) : (
-      
         <>
         <NavBarLogout {...props}/>
-        <div className="dashboard-body">
+        <div className='dashboard-body'>
         <div className="dashboard">
           <h1 className="dashboard-header">{user.name}</h1>
           <div className="dashboard-section">
@@ -217,7 +214,8 @@ const BusinessDashboard = props => {
           </div>
         </div>
       </div>
-    </>
+      </>
+
 
 )}
   

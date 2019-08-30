@@ -39,6 +39,8 @@ function App () {
 
 	const [pendingPickups, setPendingPickups] = useState([]);
 
+	const [appointments, setAppointments] = useState([]);
+
 	const getUser = currentUser => {
 		setUser(currentUser);
 	};
@@ -53,7 +55,7 @@ function App () {
 	console.log(user, 'I am the current user');
 
 	return (
-		<UserContext.Provider value={{ user, setUser, getUser, appToEdit, setAppToEdit, locations, setLocations, acceptedPickups, setAcceptedPickups, pendingPickups, setPendingPickups }}>
+		<UserContext.Provider value={{ user, setUser, getUser, appToEdit, setAppToEdit, locations, setLocations, appointments, setAppointments, acceptedPickups, setAcceptedPickups, pendingPickups, setPendingPickups }}>
 			<div className="app">
 				{/* <Navbar /> */}
 				<Route exact path="/login" component={Login} />
