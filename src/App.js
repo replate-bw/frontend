@@ -57,22 +57,21 @@ function App () {
 	return (
 		<UserContext.Provider value={{ user, setUser, getUser, appToEdit, setAppToEdit, locations, setLocations, appointments, setAppointments, acceptedPickups, setAcceptedPickups, pendingPickups, setPendingPickups }}>
 			<div className="app">
-				{/* <Navbar /> */}
-				<Route exact path="/login" component={Login} />
-				<Route exact path="/signup" component={Signup} />
-				<Route exact path="/signup/volunteer" component={SignupVolunteer} />
-				<Route exact path="/signup/business" component={SignupBusiness} />
+				<Route path="/" render={props => <Navbar {...props} />} /> 
+				<Route exact path="/login" render={props => <Login {...props} />} />
+				<Route exact path="/signup" render={props => <Signup {...props} />} />
+				<Route exact path="/signup/volunteer" render={props => <SignupVolunteer {...props} />} />
+				<Route exact path="/signup/business" render={props => <SignupBusiness {...props} />} />
 
 				{/* to be removed */}
-				<PrivateRoute path="/protected/vol" component={VolDashboard} />
-				<PrivateRoute path="/protected/busn" component={BusnDashboard} />
+				<PrivateRoute path="/protected/vol" render={props => <VolDashboard {...props} />} />
+				<PrivateRoute path="/protected/busn" render={props => <BusnDashboard {...props} />} />
 
-				{/* Colins Components */}
-				<PrivateRoute path="/protected/volunteer/:id" component={VolunteerDashboard} />
-				<PrivateRoute path="/protected/business/:id" component={BusinessDashboard} />
-				<PrivateRoute path="/protected/business/new-pickup/:id" component={NewPickupForm} />
-				<PrivateRoute path="/protected/business/edit-pickup/:id" component={EditPickupForm} />
-				<PrivateRoute path="/protected/business/new-location/:id" component={NewLocationForm} />
+				<PrivateRoute path="/protected/volunteer/:id" render={props => <VolunteerDashboard {...props} />} />
+				<PrivateRoute path="/protected/business/:id" render={props => <BusinessDashboard {...props} />} />
+				<PrivateRoute path="/protected/business/new-pickup/:id" render={props => <NewPickupForm {...props} />} />
+				<PrivateRoute path="/protected/business/edit-pickup/:id" render={props => <EditPickupForm {...props} />} />
+				<PrivateRoute path="/protected/business/new-location/:id" render={props => <NewLocationForm {...props} />} />
 			</div>
 		</UserContext.Provider>
 	);

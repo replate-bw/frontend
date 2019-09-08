@@ -61,7 +61,6 @@ const Signup = props => {
 
 	return (
 		<>
-		<NavBar />
 		<Sign>
 			<form onSubmit={handleSubmit}>
 				<Context>

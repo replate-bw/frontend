@@ -15,6 +15,10 @@
 	z-index: 100;
 
 	.nav-logo {
+		cursor: pointer;
+
+		user-select: none;
+		
 		@include LogoFont;
 	}
 

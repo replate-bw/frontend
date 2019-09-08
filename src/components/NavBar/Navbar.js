@@ -5,7 +5,7 @@ const Navbar = props => {
 	return (
 		<div className="navbar">
 			<div className="nav-content">
-				<div className="nav-logo">replate</div>
+				<div className="nav-logo" onClick={() => props.history ? props.history.push('/') : null}>replate</div>
 
 				<div className="nav-links">
 					{/* <NavLink
